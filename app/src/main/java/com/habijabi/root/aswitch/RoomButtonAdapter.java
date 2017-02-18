@@ -67,7 +67,7 @@ public class RoomButtonAdapter extends BaseAdapter {
             button = (Button) convertView;
         }
         button.setBackgroundResource(imageId[position]);
-        button.setPadding(0,10,0,0);
+        //button.setPadding(0,10,0,0);
       // button.setCompoundDrawablesWithIntrinsicBounds(0,imageId[position],0,0);
         button.setText(nameId[position]);
         button.setGravity(Gravity.TOP);
