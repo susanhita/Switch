@@ -1,6 +1,7 @@
 package com.habijabi.root.aswitch;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,8 +58,8 @@ public class RoomButtonAdapter extends BaseAdapter {
             convertView = inflater.inflate(roomlayout, null);
 
             button = new Button(mContext);
-            button.setLayoutParams(new GridView.LayoutParams(250, 250));//this is the height,wodth of the images
-
+            button.setLayoutParams(new GridView.LayoutParams(250, 300));//this is the height,wodth of the images
+            button.setElegantTextHeight(true);
 
         }
         else
@@ -66,12 +67,13 @@ public class RoomButtonAdapter extends BaseAdapter {
             button = (Button) convertView;
         }
         button.setBackgroundResource(imageId[position]);
-        //      button.setCompoundDrawablesWithIntrinsicBounds(0, mThumbIds[position],0,0);
+        button.setPadding(0,10,0,0);
+      // button.setCompoundDrawablesWithIntrinsicBounds(0,imageId[position],0,0);
         button.setText(nameId[position]);
+        button.setGravity(Gravity.TOP);
         button.setFocusable(false);
         button.setFocusableInTouchMode(false);
         button.setClickable(false);
-        button.setTransitionName("profile");
         button.setId(position);
 // inside your activity (if you did not enable transitions in your theme)
 
