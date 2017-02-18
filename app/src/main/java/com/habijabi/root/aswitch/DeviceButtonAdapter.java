@@ -11,73 +11,72 @@ import android.widget.GridView;
  * Created by root on 14/2/17.
  */
 
+
+
+
+
+    import android.content.Context;
+    import android.view.LayoutInflater;
+    import android.view.View;
+    import android.view.ViewGroup;
+    import android.widget.BaseAdapter;
+    import android.widget.ImageView;
+    import android.widget.TextView;
+
+    import java.util.List;
+
 public class DeviceButtonAdapter extends BaseAdapter {
 
+        private LayoutInflater layoutinflater;
+        private List<ItemObject> listStorage;
+        private Context context;
 
-
-
-    private Context mContext;
-
-    // Constructor
-    public DeviceButtonAdapter(Context c) {
-        mContext = c;
-    }
-
-    public int getCount() {
-        return mThumbIds.length;
-    }
-
-    public Object getItem(int position) {
-        return null;
-    }
-
-    public long getItemId(int position) {
-        return 0;
-    }
-
-
-
-
-    // create a new ImageView for each item referenced by the Adapter
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final Button button;
-
-        if (convertView == null) {
-            button = new Button(mContext);
-            button.setLayoutParams(new GridView.LayoutParams(250, 250));//this is the height,wodth of the images
-
-
+        public DeviceButtonAdapter(Context context, List<ItemObject> customizedListView) {
+            this.context = context;
+            layoutinflater =(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            listStorage = customizedListView;
         }
-        else
-        {
-            button = (Button) convertView;
+
+        @Override
+        public int getCount() {
+            return listStorage.size();
         }
-        button.setBackgroundResource(mThumbIds[position]);
-  //      button.setCompoundDrawablesWithIntrinsicBounds(0, mThumbIds[position],0,0);
-        button.setText(mStringIds[position]);
-        button.setFocusable(false);
-        button.setFocusableInTouchMode(false);
-        button.setClickable(false);
-        button.setTransitionName("profile");
-        button.setId(position);
-// inside your activity (if you did not enable transitions in your theme)
 
+        @Override
+        public Object getItem(int position) {
+            return position;
+        }
 
-        return button;
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            ViewHolder listViewHolder;
+            if(convertView == null){
+                listViewHolder = new ViewHolder();
+                convertView = layoutinflater.inflate(R.layout.room_item_list, parent, false);
+                listViewHolder.screenShot = (ImageView)convertView.findViewById(R.id.screen_shot);
+                listViewHolder.musicName = (TextView)convertView.findViewById(R.id.music_name);
+                listViewHolder.musicAuthor = (TextView)convertView.findViewById(R.id.music_author);
+
+                convertView.setTag(listViewHolder);
+            }else{
+                listViewHolder = (ViewHolder)convertView.getTag();
+            }
+            listViewHolder.screenShot.setImageResource(listStorage.get(position).getScreenShot());
+            listViewHolder.musicName.setText(listStorage.get(position).getMusicName());
+            listViewHolder.musicAuthor.setText(listStorage.get(position).getMusicAuthor());
+
+            return convertView;
+        }
+
+        static class ViewHolder{
+            ImageView screenShot;
+            TextView musicName;
+            TextView musicAuthor;
+        }
     }
-
-    // Keep all Images in array
-    public Integer[] mThumbIds = {
-            R.drawable.bedroom, R.drawable.bedroom2,
-            R.drawable.dining, R.drawable.kitchen,
-            R.drawable.balcony, R.drawable.bathroom
-
-    };
-    public String[] mStringIds = {
-            "Device 1", "Device 2",
-            "Device 3","Device 4",
-            "Device 5", "Device 6"
-
-    };
-
-}

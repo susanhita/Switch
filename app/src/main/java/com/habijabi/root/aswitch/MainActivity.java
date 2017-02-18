@@ -31,6 +31,7 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -38,6 +39,7 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -130,6 +132,18 @@ public class MainActivity extends AppCompatActivity {
 
     public static class PlaceholderFragment extends Fragment {
 
+        private List<ItemObject> getAllItemObject() {
+            List<ItemObject> items = new ArrayList<>();
+            items.add(new ItemObject(R.drawable.balcony, "Balcony", "sunny"));
+            items.add(new ItemObject(R.drawable.bathroom, "Bathroom", "Adele Adkins"));
+            items.add(new ItemObject(R.drawable.bedroom, "Bedroom", "Ciara"));
+            items.add(new ItemObject(R.drawable.bedroom2, "Second", "Bedroom"));
+            items.add(new ItemObject(R.drawable.dining, "Dining", "Room"));
+            items.add(new ItemObject(R.drawable.kitchen, "Kitchen", "Food"));
+            return items;
+
+        }
+
         private static final String ARG_SECTION_NUMBER = "section_number";/*1 2 OR 3 CORSPONDING TO FAVE ROOM AND DEVICE*/
         public Integer[] mThumbIds = {
                 R.drawable.bedroom, R.drawable.bedroom2,
@@ -212,34 +226,21 @@ public class MainActivity extends AppCompatActivity {
 
                 case 3: {/*DEVICE FRAGMENT VIEW*/
 
-                    final View rootView = inflater.inflate(R.layout.case_room_fragment, container, false);/*rootview is the room_fragment*/
-                    final GridView gridView = (GridView) rootView.findViewById(R.id.gridView);/*new layout gridview for fragment=2 ie inside room_fragment*/
-                    final Activity act = getActivity();
-                    final DeviceButtonAdapter myAdapter = new DeviceButtonAdapter(act);/*set of buttons for  grid*/
-                    gridView.setAdapter(myAdapter);
-                    gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-                        public void onItemClick(AdapterView<?> parent,
-                                                final View v, final int position, long id) {/*click->transition->roomactivity*/
+                    View view = inflater.inflate(R.layout.case_device_fragment, container, false);
+                    GridView gridview = (GridView)view.findViewById(R.id.gridview);
 
-                            Intent intent = new Intent(act, DeviceActivity.class);
-                            intent.putExtra("id", position);
+                    List<ItemObject> allItems = getAllItemObject();
+                    DeviceButtonAdapter customAdapter = new DeviceButtonAdapter(getActivity(), allItems);
+                    gridview.setAdapter(customAdapter);
 
-                            /********CREATE ANIMATION HERE AND BUNDLE IT TO b********************************************************************************************************/
-
-                           /* Pair<View, String>[] transitionPairs = new Pair[2];
-                            transitionPairs[0] = new Pair<View, String>(v.findViewById(R.id.imageview_item),
-                                    RoomActivity.VIEW_NAME_HEADER_IMAGE);
-                            transitionPairs[1] = new Pair<View, String>(v.findViewById(R.id.textview_name),
-                                    RoomActivity.VIEW_NAME_HEADER_TITLE);
-                            Bundle b = ActivityOptionsCompat.makeSceneTransitionAnimation(act, transitionPairs).toBundle();
-                            ActivityCompat.startActivity(act, intent, b);
-                            /********CREATE ANIMATION HERE AND BUNDLE IT TO b********************************************************************************************************/
-
-
+                    gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Toast.makeText(getActivity(), "Position: " + position, Toast.LENGTH_SHORT).show();
                         }
                     });
-                    return rootView;
+                    return view;
 
                 }
                 default: {
