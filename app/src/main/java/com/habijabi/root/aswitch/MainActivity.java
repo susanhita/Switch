@@ -131,6 +131,18 @@ public class MainActivity extends AppCompatActivity {
     public static class PlaceholderFragment extends Fragment {
 
         private static final String ARG_SECTION_NUMBER = "section_number";/*1 2 OR 3 CORSPONDING TO FAVE ROOM AND DEVICE*/
+        public Integer[] mThumbIds = {
+                R.drawable.bedroom, R.drawable.bedroom2,
+                R.drawable.dining, R.drawable.kitchen,
+                R.drawable.balcony, R.drawable.bathroom
+
+        };
+        public String[] mStringIds = {
+                "Bedroom", "Bedroom2",
+                "Dining","Kitchen",
+                "Balcony", "Bathroom"
+
+        };
 
         public PlaceholderFragment() {
         }
@@ -147,19 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
         private RoomButtonAdapter mGridAdapter;
 
-        private Integer[] mThumbIds = {
-                R.drawable.bedroom, R.drawable.bedroom2,
-                R.drawable.dining, R.drawable.kitchen,
-                R.drawable.balcony, R.drawable.bathroom
 
-        };
-
-        private String[] mStringIds = {
-                "bedroom", "bedroom2",
-                "dining", "kitchen",
-                "balcony", "bathroom"
-
-        };
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {/*INFLATING EACH FRAGMENT*/
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                     final View rootView = inflater.inflate(R.layout.case_room_fragment, container, false);/*rootview is the room_fragment*/
                     final GridView gridView = (GridView) rootView.findViewById(R.id.gridView);/*new layout gridview for fragment=2 ie inside room_fragment*/
                     final Activity act = getActivity();
-                    final RoomButtonAdapter myAdapter = new RoomButtonAdapter(act,R.layout.grid_item_layout);/*set of buttons for  grid*/
+                    final RoomButtonAdapter myAdapter = new RoomButtonAdapter(act,R.layout.grid_item_layout,mThumbIds,mStringIds);/*set of buttons for  grid*/
                     gridView.setAdapter(myAdapter);
                     gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -178,15 +178,16 @@ public class MainActivity extends AppCompatActivity {
 
                             Intent intent = new Intent(act, RoomActivity.class);
                             intent.putExtra("id", position);
+                            intent.putExtra("name",mStringIds[position]);
+                            intent.putExtra("imageId",mThumbIds[position]);
+
+
                             startActivity(intent);
                         }});
                             /********CREATE ANIMATION HERE AND BUNDLE IT TO b********************************************************************************************************/
 
-                           /* Pair<View, String>[] transitionPairs = new Pair[2];
-                            transitionPairs[0] = new Pair<View, String>(v.findViewById(R.id.imageview_item),
-                                    RoomActivity.VIEW_NAME_HEADER_IMAGE);
-                            transitionPairs[1] = new Pair<View, String>(v.findViewById(R.id.textview_name),
-                                    RoomActivity.VIEW_NAME_HEADER_TITLE);
+                           /*
+
                             Bundle b = ActivityOptionsCompat.makeSceneTransitionAnimation(act, transitionPairs).toBundle();
                             ActivityCompat.startActivity(act, intent, b);
 

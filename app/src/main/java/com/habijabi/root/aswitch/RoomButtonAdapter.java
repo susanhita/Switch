@@ -20,10 +20,14 @@ public class RoomButtonAdapter extends BaseAdapter {
     private Context mContext;
     LayoutInflater inflater;
     int roomlayout;
+    Integer[] imageId;
+    String[] nameId;
 
 
     // Constructor
-    public RoomButtonAdapter(Context c,int layoutResourceId) {
+    public RoomButtonAdapter(Context c,int layoutResourceId,Integer image_id[],String name_id[]) {
+        imageId=image_id;
+        nameId=name_id;
         roomlayout=layoutResourceId;
         mContext = c;
         inflater = (LayoutInflater) this.mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -31,7 +35,7 @@ public class RoomButtonAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return mThumbIds.length;
+        return nameId.length;
     }
 
     public Object getItem(int position) {
@@ -61,9 +65,9 @@ public class RoomButtonAdapter extends BaseAdapter {
         {
             button = (Button) convertView;
         }
-        button.setBackgroundResource(mThumbIds[position]);
+        button.setBackgroundResource(imageId[position]);
         //      button.setCompoundDrawablesWithIntrinsicBounds(0, mThumbIds[position],0,0);
-        button.setText(mStringIds[position]);
+        button.setText(nameId[position]);
         button.setFocusable(false);
         button.setFocusableInTouchMode(false);
         button.setClickable(false);
@@ -76,17 +80,6 @@ public class RoomButtonAdapter extends BaseAdapter {
     }
 
     // Keep all Images in array
-    public Integer[] mThumbIds = {
-            R.drawable.bedroom, R.drawable.bedroom2,
-            R.drawable.dining, R.drawable.kitchen,
-            R.drawable.balcony, R.drawable.bathroom
 
-    };
-    public String[] mStringIds = {
-            "Bedroom", "Bedroom2",
-            "Dining","Kitchen",
-            "Balcony", "Bathroom"
-
-    };
 
 }
