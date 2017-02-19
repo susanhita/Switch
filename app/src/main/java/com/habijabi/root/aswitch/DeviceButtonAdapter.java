@@ -1,6 +1,8 @@
 package com.habijabi.root.aswitch;
 
 import android.content.Context;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,72 +13,75 @@ import android.widget.GridView;
  * Created by root on 14/2/17.
  */
 
-
-
-
-
-    import android.content.Context;
-    import android.view.LayoutInflater;
-    import android.view.View;
-    import android.view.ViewGroup;
-    import android.widget.BaseAdapter;
-    import android.widget.ImageView;
-    import android.widget.TextView;
-
-    import java.util.List;
-
 public class DeviceButtonAdapter extends BaseAdapter {
 
-        private LayoutInflater layoutinflater;
-        private List<ItemObject> listStorage;
-        private Context context;
 
-        public DeviceButtonAdapter(Context context, List<ItemObject> customizedListView) {
-            this.context = context;
-            layoutinflater =(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            listStorage = customizedListView;
-        }
 
-        @Override
-        public int getCount() {
-            return listStorage.size();
-        }
 
-        @Override
-        public Object getItem(int position) {
-            return position;
-        }
+    private Context mContext;
+    LayoutInflater inflater;
+    int roomlayout;
+    Integer[] imageId;
+    String[] nameId;
 
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
 
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+    // Constructor
+    public DeviceButtonAdapter(Context c, int layoutResourceId, Integer image_id[], String name_id[]) {
+        imageId=image_id;
+        nameId=name_id;
+        roomlayout=layoutResourceId;
+        mContext = c;
+        inflater = (LayoutInflater) this.mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            ViewHolder listViewHolder;
-            if(convertView == null){
-                listViewHolder = new ViewHolder();
-                convertView = layoutinflater.inflate(R.layout.room_item_list, parent, false);
-                listViewHolder.screenShot = (ImageView)convertView.findViewById(R.id.screen_shot);
-                listViewHolder.musicName = (TextView)convertView.findViewById(R.id.music_name);
-                listViewHolder.musicAuthor = (TextView)convertView.findViewById(R.id.music_author);
-
-                convertView.setTag(listViewHolder);
-            }else{
-                listViewHolder = (ViewHolder)convertView.getTag();
-            }
-            listViewHolder.screenShot.setImageResource(listStorage.get(position).getScreenShot());
-            listViewHolder.musicName.setText(listStorage.get(position).getMusicName());
-            listViewHolder.musicAuthor.setText(listStorage.get(position).getMusicAuthor());
-
-            return convertView;
-        }
-
-        static class ViewHolder{
-            ImageView screenShot;
-            TextView musicName;
-            TextView musicAuthor;
-        }
     }
+
+    public int getCount() {
+        return nameId.length;
+    }
+
+    public Object getItem(int position) {
+        return null;
+    }
+
+    public long getItemId(int position) {
+        return 0;
+    }
+
+
+
+
+    // create a new ImageView for each item referenced by the Adapter
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final Button button;
+
+        if (convertView == null) {
+            convertView = inflater.inflate(roomlayout, null);
+
+            button = new Button(mContext);
+            button.setLayoutParams(new GridView.LayoutParams(250, 300));//this is the height,wodth of the images
+            button.setElegantTextHeight(true);
+
+        }
+        else
+        {
+            button = (Button) convertView;
+        }
+        button.setBackgroundResource(imageId[position]);
+        //button.setPadding(0,10,0,0);
+      // button.setCompoundDrawablesWithIntrinsicBounds(0,imageId[position],0,0);
+        button.setText(nameId[position]);
+        button.setGravity(Gravity.TOP);
+        button.setFocusable(false);
+        button.setFocusableInTouchMode(false);
+        button.setClickable(false);
+        button.setId(position);
+// inside your activity (if you did not enable transitions in your theme)
+
+
+        return button;
+    }
+
+    // Keep all Images in array
+
+
+}

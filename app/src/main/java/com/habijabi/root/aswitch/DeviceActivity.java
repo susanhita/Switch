@@ -19,7 +19,7 @@ public class DeviceActivity extends AppCompatActivity {
     @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.inside_device_view);
+            setContentView(R.layout.activity_device);
         Log.v("here","heeeeeeeeeeeeeeeeeeeeeeeee");
           //  setSupportActionBar((Toolbar) findViewById(R.id.button1));
 

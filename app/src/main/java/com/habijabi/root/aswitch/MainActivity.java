@@ -8,10 +8,7 @@ import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.util.Pair;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 
@@ -21,17 +18,15 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
-import android.text.Layout;
+import android.transition.Explode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -91,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
 
     /**
@@ -171,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        private RoomButtonAdapter mGridAdapter;
+        private DeviceButtonAdapter mGridAdapter;
 
 
         @Override
@@ -183,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                     final View rootView = inflater.inflate(R.layout.case_room_fragment, container, false);/*rootview is the room_fragment*/
                     final GridView gridView = (GridView) rootView.findViewById(R.id.gridView);/*new layout gridview for fragment=2 ie inside room_fragment*/
                     final Activity act = getActivity();
-                    final RoomButtonAdapter myAdapter = new RoomButtonAdapter(act,R.layout.grid_item_layout,mThumbIds,mStringIds);/*set of buttons for  grid*/
+                    final DeviceButtonAdapter myAdapter = new DeviceButtonAdapter(act,R.layout.grid_item_layout,mThumbIds,mStringIds);/*set of buttons for  grid*/
                     gridView.setAdapter(myAdapter);
                     gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -210,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
                             /********CREATE ANIMATION HERE AND BUNDLE IT TO b********************************************************************************************************/
 
 
+
                     return rootView;
 
                 }
@@ -229,17 +226,14 @@ public class MainActivity extends AppCompatActivity {
 
                     View view = inflater.inflate(R.layout.case_device_fragment, container, false);
                     GridView gridview = (GridView)view.findViewById(R.id.gridview);
-
                     List<ItemObject> allItems = getAllItemObject();
-                    DeviceButtonAdapter customAdapter = new DeviceButtonAdapter(getActivity(), allItems);
+                    RoomButtonAdapter customAdapter = new RoomButtonAdapter(getContext(), allItems);
+                    gridview.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
+
+
+
                     gridview.setAdapter(customAdapter);
 
-                    gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Toast.makeText(getActivity(), "Position: " + position, Toast.LENGTH_SHORT).show();
-                        }
-                    });
                     return view;
 
                 }
@@ -280,9 +274,9 @@ public class MainActivity extends AppCompatActivity {
                 case 0:
                     return "Favorites";
                 case 1:
-                    return "Room View";
-                case 2:
                     return "Device View";
+                case 2:
+                    return "Room View";
             }
             return null;
         }

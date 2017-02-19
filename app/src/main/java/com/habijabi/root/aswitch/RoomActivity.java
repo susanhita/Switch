@@ -8,7 +8,6 @@ package com.habijabi.root.aswitch;
     import android.util.Log;
     import android.widget.ImageView;
     import android.widget.TextView;
-    import android.widget.Toolbar;
 
 public class RoomActivity extends AppCompatActivity {
     public static  String VIEW_NAME_HEADER_IMAGE = "detail:header:image";
@@ -19,7 +18,7 @@ public class RoomActivity extends AppCompatActivity {
     @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.inside_room_view);
+            setContentView(R.layout.activity_room);
           //  setSupportActionBar((Toolbar) findViewById(R.id.button1));
 
 
