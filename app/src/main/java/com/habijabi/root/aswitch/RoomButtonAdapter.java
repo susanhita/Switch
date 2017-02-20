@@ -68,7 +68,7 @@ public class RoomButtonAdapter extends BaseAdapter {
                 convertView = layoutinflater.inflate(R.layout.room_item_list, parent, false);
                 listViewHolder.screenShot = (ImageView)convertView.findViewById(screen_shot);
                 listViewHolder.musicName = (TextView)convertView.findViewById(R.id.music_name);
-                listViewHolder.musicAuthor = (TextView)convertView.findViewById(R.id.music_author);
+                //listViewHolder.musicAuthor = (TextView)convertView.findViewById(R.id.music_author);
 
                 convertView.setTag(listViewHolder);
             }else{
@@ -76,7 +76,7 @@ public class RoomButtonAdapter extends BaseAdapter {
             }
             listViewHolder.screenShot.setImageResource(listStorage.get(position).getScreenShot());
             listViewHolder.musicName.setText(listStorage.get(position).getMusicName());
-            listViewHolder.musicAuthor.setText(listStorage.get(position).getMusicAuthor());
+          //  listViewHolder.musicAuthor.setText(listStorage.get(position).getMusicAuthor());
             convertView.setOnClickListener(new AdapterView.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -85,8 +85,8 @@ public class RoomButtonAdapter extends BaseAdapter {
 
                     Intent intent = new Intent(context, RoomActivity.class);
                     intent.putExtra("id", position);
-                    intent.putExtra("name",mStringIds[position]);
-                    intent.putExtra("imageId",mThumbIds[position]);
+                    intent.putExtra("name",listStorage.get(position).getMusicName());
+                    intent.putExtra("imageId",listStorage.get(position).getScreenShot());
 
                     ActivityOptionsCompat options = ActivityOptionsCompat.
                             makeSceneTransitionAnimation((Activity)context, listViewHolder.screenShot, "profile");
@@ -95,25 +95,13 @@ public class RoomButtonAdapter extends BaseAdapter {
                    // context.startActivity(intent);
 
 
-                    Toast.makeText(context, "Clicked" + v.getId() + "!!",
-                            Toast.LENGTH_SHORT).show();
+
                 }
         });
             return convertView;
         }
 
-    public Integer[] mThumbIds = {
-            R.drawable.balcony, R.drawable.bathroom,
-            R.drawable.bedroom, R.drawable.bedroom2,
-            R.drawable.dining, R.drawable.kitchen
 
-    };
-    public String[] mStringIds = {
-            "balcony", "bathroom",
-            "bedroom","bedroom2",
-            "dining", "kitchen"
-
-    };
 
         static class ViewHolder{
             ImageView screenShot;
