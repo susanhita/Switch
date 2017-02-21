@@ -1,11 +1,18 @@
 package com.habijabi.root.aswitch;
 
+import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
+import android.support.transition.Transition;
+import android.support.transition.TransitionManager;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.transition.Explode;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -30,6 +37,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import static android.R.transition.explode;
 import static com.habijabi.root.aswitch.R.id.screen_shot;
 
 public class RoomButtonAdapter extends BaseAdapter {
@@ -81,18 +89,37 @@ public class RoomButtonAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     // TODO Auto-generated method stub
+                    Animator animator = ViewAnimationUtils.createCircularReveal(
+                            v,
+                            v.getWidth()/2,
+                            v.getHeight()/2,
+                            v.getWidth(),
+                            0);
+                    animator.setInterpolator(new AccelerateDecelerateInterpolator());
+                    animator.setDuration(2000);
+                    animator.start();
 
-
-                    Intent intent = new Intent(context, RoomActivity.class);
+                Intent intent = new Intent(context, RoomActivity.class);
                     intent.putExtra("id", position);
                     intent.putExtra("name",listStorage.get(position).getMusicName());
                     intent.putExtra("imageId",listStorage.get(position).getScreenShot());
+                    final Rect viewRect = new Rect();
+                    v.getGlobalVisibleRect(viewRect);
 
-                    ActivityOptionsCompat options = ActivityOptionsCompat.
-                            makeSceneTransitionAnimation((Activity)context, listViewHolder.screenShot, "profile");
 
-                    context.startActivity(intent, options.toBundle());
-                   // context.startActivity(intent);
+                    v.getGlobalVisibleRect(viewRect);
+
+                    // create Explode transition with epicenter
+
+
+
+
+
+
+                  //    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context, listViewHolder.screenShot, "profile");
+                   // ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(listViewHolder.screenShot,0,0,0,0);
+                   //context.startActivity(intent, options.toBundle());
+                    context.startActivity(intent);
 
 
 

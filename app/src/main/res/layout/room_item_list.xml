@@ -17,7 +17,6 @@
         android:padding="8dp">
 
         <ImageView
-            android:transitionName="profile"
             android:id="@+id/screen_shot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

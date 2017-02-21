@@ -11,9 +11,8 @@
         android:id="@+id/textView" />
 
     <ImageView
-        android:layout_width="match_parent"
-        android:transitionName="profile"
-        android:layout_height="wrap_content"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
         android:id="@+id/imageView" />
 
 

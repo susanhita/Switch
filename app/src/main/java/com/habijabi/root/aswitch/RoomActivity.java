@@ -10,36 +10,41 @@ package com.habijabi.root.aswitch;
     import android.widget.TextView;
 
 public class RoomActivity extends AppCompatActivity {
-    public static  String VIEW_NAME_HEADER_IMAGE = "detail:header:image";
+    public static String VIEW_NAME_HEADER_IMAGE = "detail:header:image";
 
     // View name of the header title. Used for activity scene transitions
-    public static  String VIEW_NAME_HEADER_TITLE = "detail:header:title";
+    public static String VIEW_NAME_HEADER_TITLE = "detail:header:title";
 
     @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_room);
-          //  setSupportActionBar((Toolbar) findViewById(R.id.button1));
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_room);
+        //  setSupportActionBar((Toolbar) findViewById(R.id.button1));
 
 
+        // Get intent data
+        Intent i = getIntent();
 
-            // Get intent data
-            Intent i = getIntent();
-
-            // Selected image id
-            int position = i.getExtras().getInt("id");
-            Integer imageid=i.getExtras().getInt("imageId");
-            String nameid=i.getExtras().getString("name");
+        // Selected image id
+        int position = i.getExtras().getInt("id");
+        Integer imageid = i.getExtras().getInt("imageId");
+        String nameid = i.getExtras().getString("name");
 
 //            imageView.setText(position);
-            //imageView.setImageResource(imageAdapter.mThumbIds[position]);
+        //imageView.setImageResource(imageAdapter.mThumbIds[position]);
 
-        Log.v("here","lets see" +position);
+        Log.v("here", "lets see" + position);
         ImageView mHeaderImageView = (ImageView) findViewById(R.id.imageView);
         mHeaderImageView.setImageResource(imageid);
-        ViewCompat.setTransitionName(mHeaderImageView, VIEW_NAME_HEADER_IMAGE);
         TextView mHeaderTitle = (TextView) findViewById(R.id.textView);
         mHeaderTitle.setText(nameid);
-        ViewCompat.setTransitionName(mHeaderTitle, VIEW_NAME_HEADER_TITLE);
-        }
     }
+
+    public void onBackPressed() {
+    super.onBackPressed ();
+        overridePendingTransition(R.anim.scale_up, R.anim.scale_down);
+//overridePendingTransition(1);
+    }
+
+
+}
