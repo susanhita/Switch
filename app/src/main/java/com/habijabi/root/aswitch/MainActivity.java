@@ -18,10 +18,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
-import android.transition.Explode;
-import android.transition.Fade;
-import android.transition.Slide;
-import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);/*BACKGROUND OF MAINPAGE CONTAINING ROOMVIEW,FAVEVIEW AND DEVICE VIEW]*/
@@ -179,16 +176,19 @@ public class MainActivity extends AppCompatActivity {
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
 
                 case 2: {/*ROOM FRAGMENT VIEW*/
+
+
+
+
                     final View rootView = inflater.inflate(R.layout.case_room_fragment, container, false);/*rootview is the room_fragment*/
                     final GridView gridView = (GridView) rootView.findViewById(R.id.gridView);/*new layout gridview for fragment=2 ie inside room_fragment*/
                     final Activity act = getActivity();
-                    final DeviceButtonAdapter myAdapter = new DeviceButtonAdapter(act,R.layout.grid_item_layout,mThumbIds,mStringIds);/*set of buttons for  grid*/
+                    final DeviceButtonAdapter myAdapter = new DeviceButtonAdapter(act,R.layout.device_item_layout,mThumbIds,mStringIds);/*set of buttons for  grid*/
                     gridView.setAdapter(myAdapter);
                     gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                         public void onItemClick(AdapterView<?> parent,
                                                 final View v, final int position, long id) {/*click->transition->roomactivity*/
-
                             Intent intent = new Intent(act, RoomActivity.class);
                             intent.putExtra("id", position);
                             intent.putExtra("name",mStringIds[position]);

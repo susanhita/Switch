@@ -22,16 +22,13 @@ public class RoomActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
 
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+
 
         setContentView(R.layout.activity_room);
 
-        Slide slide = new Slide();
-        slide.setDuration(1000);
-        getWindow().setExitTransition(slide);
-        //  setSupportActionBar((Toolbar) findViewById(R.id.button1));
 
 
         // Get intent data
@@ -52,10 +49,6 @@ public class RoomActivity extends AppCompatActivity {
         mHeaderTitle.setText(nameid);
     }
 
-    private void setupWindowAnimations() {
-        Slide fade = new Slide();
-        fade.setDuration(1000);
-        getWindow().setExitTransition(fade);
-    }
+
 
 }

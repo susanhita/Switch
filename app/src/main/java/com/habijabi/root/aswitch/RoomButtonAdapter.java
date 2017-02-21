@@ -11,6 +11,7 @@ import android.support.transition.TransitionManager;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.CardView;
 import android.transition.Explode;
+import android.transition.Fade;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
@@ -102,6 +103,8 @@ public class RoomButtonAdapter extends BaseAdapter {
                     intent.putExtra("id", position);
                     intent.putExtra("name",listStorage.get(position).getMusicName());
                     intent.putExtra("imageId",listStorage.get(position).getScreenShot());
+
+
                         ActivityOptionsCompat options =
                                 ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context,
                                 cardView,   // Starting view
@@ -111,7 +114,6 @@ public class RoomButtonAdapter extends BaseAdapter {
                         context.startActivity( intent, options.toBundle());
 
                        // context.startActivity(intent);
-
 
 
 
