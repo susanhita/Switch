@@ -19,6 +19,9 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
 import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -230,8 +233,6 @@ public class MainActivity extends AppCompatActivity {
                     RoomButtonAdapter customAdapter = new RoomButtonAdapter(getContext(), allItems);
                     gridview.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
 
-
-
                     gridview.setAdapter(customAdapter);
 
                     return view;
@@ -246,6 +247,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+
+
+
+
     }
 
 

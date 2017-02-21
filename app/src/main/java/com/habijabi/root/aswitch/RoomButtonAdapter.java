@@ -2,16 +2,19 @@ package com.habijabi.root.aswitch;
 
 import android.animation.Animator;
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.support.transition.Transition;
 import android.support.transition.TransitionManager;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v7.widget.CardView;
 import android.transition.Explode;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.AdapterView;
@@ -39,6 +42,8 @@ import android.widget.Toast;
 import java.util.List;
 
 import static android.R.transition.explode;
+import static com.habijabi.root.aswitch.R.id.card_view;
+import static com.habijabi.root.aswitch.R.id.fab;
 import static com.habijabi.root.aswitch.R.id.grid_item_image;
 import static com.habijabi.root.aswitch.R.id.screen_shot;
 
@@ -47,6 +52,7 @@ public class RoomButtonAdapter extends BaseAdapter {
         private LayoutInflater layoutinflater;
         private List<ItemObject> listStorage;
         public Context context;
+        public View cardView;
 
         public RoomButtonAdapter(Context context, List<ItemObject> customizedListView) {
             this.context = context;
@@ -78,65 +84,35 @@ public class RoomButtonAdapter extends BaseAdapter {
                 convertView = layoutinflater.inflate(R.layout.room_item_list, parent, false);
                 listViewHolder.screenShot = (ImageView)convertView.findViewById(screen_shot);
                 listViewHolder.musicName = (TextView)convertView.findViewById(R.id.music_name);
-                //listViewHolder.musicAuthor = (TextView)convertView.findViewById(R.id.music_author);
-
+                cardView=convertView.findViewById(R.id.card_view);
                 convertView.setTag(listViewHolder);
             }else{
                 listViewHolder = (ViewHolder)convertView.getTag();
             }
             listViewHolder.screenShot.setImageResource(listStorage.get(position).getScreenShot());
             listViewHolder.musicName.setText(listStorage.get(position).getMusicName());
-          //  listViewHolder.musicAuthor.setText(listStorage.get(position).getMusicAuthor());
             convertView.setOnClickListener(new AdapterView.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // TODO Auto-generated method stub
-                    Animator animator = ViewAnimationUtils.createCircularReveal(
-                            v,
-                            v.getWidth()/2,
-                            v.getHeight()/2,
-                            v.getWidth(),
-                            0);
-                    animator.setInterpolator(new AccelerateDecelerateInterpolator());
-                    animator.setDuration(2000);
-                    animator.start();
 
-                Intent intent = new Intent(context, RoomActivity.class);
+                    /**************/
+
+                    @Override
+                    public void onClick(View v) {
+
+                    Intent intent = new Intent(context, RoomActivity.class);
                     intent.putExtra("id", position);
                     intent.putExtra("name",listStorage.get(position).getMusicName());
                     intent.putExtra("imageId",listStorage.get(position).getScreenShot());
-                    final Rect viewRect = new Rect();
-                    v.getGlobalVisibleRect(viewRect);
+                        ActivityOptionsCompat options =
+                                ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context,
+                                cardView,   // Starting view
+                                "animate"    // The String
+                        );
+                        //Start the Intent
+                        context.startActivity( intent, options.toBundle());
+
+                       // context.startActivity(intent);
 
 
-                    v.getGlobalVisibleRect(viewRect);
-
-                    // create Explode transition with epicenter
-                    final View rect = listViewHolder.screenShot;
-                    rect.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Animator animator = ViewAnimationUtils.createCircularReveal(
-                                    rect,
-                                    0,
-                                    0,
-                                    0,
-                                    (float) Math.hypot(rect.getWidth(), rect.getHeight()));
-                            animator.setInterpolator(new AccelerateInterpolator());
-                            animator.setDuration(2000);
-                            animator.start();
-                        }
-                    });
-
-
-
-
-
-
-                  //    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context, listViewHolder.screenShot, "profile");
-                   // ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(listViewHolder.screenShot,0,0,0,0);
-                   //context.startActivity(intent, options.toBundle());
-                    context.startActivity(intent);
 
 
 

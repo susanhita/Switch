@@ -3,9 +3,12 @@ package com.habijabi.root.aswitch;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.transition.Fade;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Slide;
 import android.util.Log;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -18,7 +21,8 @@ public class DeviceActivity extends AppCompatActivity {
 
     @Override
         public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+
+        super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_device);
         Log.v("here","heeeeeeeeeeeeeeeeeeeeeeeee");
           //  setSupportActionBar((Toolbar) findViewById(R.id.button1));
@@ -42,4 +46,13 @@ public class DeviceActivity extends AppCompatActivity {
         TextView mHeaderTitle = (TextView) findViewById(R.id.SingleView);
         ViewCompat.setTransitionName(mHeaderTitle, VIEW_NAME_HEADER_TITLE);
         }
+
+
+
+
+
+
+
+
+
     }

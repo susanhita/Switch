@@ -5,6 +5,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:clickable="true"
+    android:onClick="animateIntent"
+    android:transitionName="animate"
+
     android:focusable="true"
     android:foreground="?android:selectableItemBackground"
     card_view:cardUseCompatPadding="true"
