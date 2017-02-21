@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -38,6 +39,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import static android.R.transition.explode;
+import static com.habijabi.root.aswitch.R.id.grid_item_image;
 import static com.habijabi.root.aswitch.R.id.screen_shot;
 
 public class RoomButtonAdapter extends BaseAdapter {
@@ -110,6 +112,21 @@ public class RoomButtonAdapter extends BaseAdapter {
                     v.getGlobalVisibleRect(viewRect);
 
                     // create Explode transition with epicenter
+                    final View rect = listViewHolder.screenShot;
+                    rect.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Animator animator = ViewAnimationUtils.createCircularReveal(
+                                    rect,
+                                    0,
+                                    0,
+                                    0,
+                                    (float) Math.hypot(rect.getWidth(), rect.getHeight()));
+                            animator.setInterpolator(new AccelerateInterpolator());
+                            animator.setDuration(2000);
+                            animator.start();
+                        }
+                    });
 
 
 
