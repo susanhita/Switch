@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:onClick="animateIntent"
-    android:transitionName="animate"
     android:transitionGroup="true"
     android:focusable="true"
     android:foreground="?android:selectableItemBackground"
@@ -20,6 +19,8 @@
         android:padding="8dp">
 
         <ImageView
+            android:transitionName="animate"
+
             android:id="@+id/screen_shot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

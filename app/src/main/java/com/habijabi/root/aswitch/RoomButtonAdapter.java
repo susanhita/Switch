@@ -107,7 +107,7 @@ public class RoomButtonAdapter extends BaseAdapter {
 
                         ActivityOptionsCompat options =
                                 ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context,
-                                cardView,   // Starting view
+                                        listViewHolder.screenShot ,   // Starting view
                                 "animate"    // The String
                         );
                         //Start the Intent
