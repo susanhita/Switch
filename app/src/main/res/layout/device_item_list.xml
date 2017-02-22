@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <android.support.v7.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<LinearLayout
+
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+    android:id="@+id/device_list"
+android:padding="8dp">
+<ImageView
+    android:transitionName="animate"
+
+    android:id="@+id/device_icon"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:contentDescription="hello_world"
+    android:layout_alignParentTop="true"
+    android:scaleType="centerCrop"
+    android:src="@drawable/device1"
+    android:layout_centerHorizontal="true"/>
+
+<TextView
+    android:transitionName="text"
+    android:id="@+id/device_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="hello_world"
+    android:inputType="text"
+    android:textAppearance="@style/TextAppearance.AppCompat.Button"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentStart="true" />
+
+
+</LinearLayout>
+</android.support.v7.widget.RecyclerView>

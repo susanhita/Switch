@@ -33,6 +33,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
@@ -268,43 +269,18 @@ public class MainActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {/*INFLATING EACH FRAGMENT*/
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
 
-                case 2: {/*ROOM FRAGMENT VIEW*/
+                case 2: {/*device FRAGMENT VIEW*/
 
 
 
 
-                    final View rootView = inflater.inflate(R.layout.case_room_fragment, container, false);/*rootview is the room_fragment*/
-                    final GridView gridView = (GridView) rootView.findViewById(R.id.gridView);/*new layout gridview for fragment=2 ie inside room_fragment*/
-                    final Activity act = getActivity();
-                    final DeviceButtonAdapter myAdapter = new DeviceButtonAdapter(act,R.layout.device_item_layout,mThumbIds,mStringIds);/*set of buttons for  grid*/
-                    gridView.setAdapter(myAdapter);
-                    gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                        public void onItemClick(AdapterView<?> parent,
-                                                final View v, final int position, long id) {/*click->transition->roomactivity*/
-                            Intent intent = new Intent(act, RoomActivity.class);
-                            intent.putExtra("id", position);
-                            intent.putExtra("name",mStringIds[position]);
-                            intent.putExtra("imageId",mThumbIds[position]);
-
-
-                            startActivity(intent);
-                        }});
-                            /********CREATE ANIMATION HERE AND BUNDLE IT TO b********************************************************************************************************/
-
-                           /*
-
-                            Bundle b = ActivityOptionsCompat.makeSceneTransitionAnimation(act, transitionPairs).toBundle();
-                            ActivityCompat.startActivity(act, intent, b);
-
-                        }
-
-                            /********CREATE ANIMATION HERE AND BUNDLE IT TO b********************************************************************************************************/
-
-
-
-                    return rootView;
-
+                    final View view = inflater.inflate(R.layout.case_device_fragment, container, false);/*rootview is the room_fragment*/
+                    ListView listView = (ListView) view.findViewById(R.id.listView);/*new layout gridview for fragment=2 ie inside room_fragment*/
+                    List<ItemObject> allItems = getAllItemObject();
+                    DeviceButtonAdapter customAdapter = new DeviceButtonAdapter(getContext(), allItems);
+                    listView.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
+                    listView.setAdapter(customAdapter);
+                    return view;
                 }
 
 
@@ -317,11 +293,11 @@ public class MainActivity extends AppCompatActivity {
                     return rootView1;
                 }
 
-                case 3: {/*DEVICE FRAGMENT VIEW*/
+                case 3: {/*Room FRAGMENT VIEW*/
 
 
-                    View view = inflater.inflate(R.layout.case_device_fragment, container, false);
-                    GridView gridview = (GridView)view.findViewById(R.id.gridview);
+                    View view = inflater.inflate(R.layout.case_room_fragment, container, false);
+                    GridView gridview = (GridView) view.findViewById(R.id.gridView);
                     List<ItemObject> allItems = getAllItemObject();
                     RoomButtonAdapter customAdapter = new RoomButtonAdapter(getContext(), allItems);
                     gridview.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
