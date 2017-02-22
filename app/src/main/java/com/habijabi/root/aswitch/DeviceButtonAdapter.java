@@ -45,6 +45,7 @@ import java.util.List;
 
 import static android.R.transition.explode;
 import static com.habijabi.root.aswitch.R.id.card_view;
+import static com.habijabi.root.aswitch.R.id.device_icon;
 import static com.habijabi.root.aswitch.R.id.fab;
 import static com.habijabi.root.aswitch.R.id.screen_shot;
 
@@ -82,15 +83,14 @@ public class DeviceButtonAdapter extends BaseAdapter {
         final ViewHolder listViewHolder;
         if(convertView == null){
             listViewHolder = new ViewHolder();
-            convertView = layoutinflater.inflate(R.layout.room_item_list, parent, false);
-            listViewHolder.screenShot = (ImageView)convertView.findViewById(screen_shot);
-            listViewHolder.musicName = (TextView)convertView.findViewById(R.id.music_name);
+            convertView = layoutinflater.inflate(R.layout.device_item_list, parent, false);
+            listViewHolder.screenShot = (ImageView)convertView.findViewById(device_icon);
+            listViewHolder.musicName = (TextView)convertView.findViewById(R.id.device_name);
             cardView=convertView.findViewById(R.id.card_view);
             convertView.setTag(listViewHolder);
         }else{
             listViewHolder = (ViewHolder)convertView.getTag();
         }
-        listViewHolder.screenShot.setImageResource(listStorage.get(position).getScreenShot());
         listViewHolder.musicName.setText(listStorage.get(position).getMusicName());
         convertView.setOnClickListener(new AdapterView.OnClickListener() {
 
