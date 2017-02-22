@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.support.transition.Transition;
 import android.support.transition.TransitionManager;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.CardView;
 import android.transition.Explode;
 import android.transition.Fade;
@@ -102,15 +103,30 @@ public class RoomButtonAdapter extends BaseAdapter {
                     Intent intent = new Intent(context, RoomActivity.class);
                     intent.putExtra("id", position);
                     intent.putExtra("name",listStorage.get(position).getMusicName());
+
+
                     intent.putExtra("imageId",listStorage.get(position).getScreenShot());
+                        Pair<View, String> p1 = Pair.create((View)listViewHolder.screenShot, "animate");
+                        Pair<View, String> p3 = Pair.create((View)listViewHolder.musicName, "text");
+
+
+
 
 
                         ActivityOptionsCompat options =
                                 ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context,
+                                        p1,p3   // The String
+                                );
+
+
+
+
+
+                     /*   ActivityOptionsCompat options =
+                                ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context,
                                         listViewHolder.screenShot ,   // Starting view
                                 "animate"    // The String
-                        );
-                        //Start the Intent
+                        );*/
                         context.startActivity( intent, options.toBundle());
 
                        // context.startActivity(intent);
