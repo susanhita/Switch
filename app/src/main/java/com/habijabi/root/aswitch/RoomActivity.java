@@ -11,7 +11,11 @@ package com.habijabi.root.aswitch;
     import android.transition.TransitionInflater;
     import android.util.Log;
     import android.view.Window;
+    import android.view.animation.Animation;
+    import android.view.animation.AnimationUtils;
+    import android.widget.ArrayAdapter;
     import android.widget.ImageView;
+    import android.widget.ListView;
     import android.widget.TextView;
 
 public class RoomActivity extends AppCompatActivity {
@@ -47,6 +51,16 @@ public class RoomActivity extends AppCompatActivity {
         mHeaderImageView.setImageResource(imageid);
         TextView mHeaderTitle = (TextView) findViewById(R.id.textView);
         mHeaderTitle.setText(nameid);
+        String[] mobileArray = {"Lights","Fans","AC","TV","Camera","Locks"};
+        ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.room_activity_list,mobileArray);
+
+
+        ListView roomlist=(ListView)findViewById(R.id.roomlist);
+        roomlist.setAdapter(adapter);
+        Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.explode);
+        animation2.setStartOffset(700);
+        roomlist.startAnimation(animation2);
+
     }
 
 

@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static class PlaceholderFragment extends Fragment {
 
-        private List<ItemObject> getAllItemObject() {
+        private List<ItemObject> getAllRoomItemObject() {
             List<ItemObject> items = new ArrayList<>();
             items.add(new ItemObject(R.drawable.balcony, "Balcony", "sunny"));
             items.add(new ItemObject(R.drawable.bathroom, "Bathroom", "Adele Adkins"));
@@ -230,6 +230,18 @@ public class MainActivity extends AppCompatActivity {
             items.add(new ItemObject(R.drawable.bedroom2, "Second", "Bedroom"));
             items.add(new ItemObject(R.drawable.dining, "Dining", "Room"));
             items.add(new ItemObject(R.drawable.kitchen, "Kitchen", "Food"));
+            return items;
+
+        }
+
+        private List<ItemObject> getAllDeviceItemObject() {
+            List<ItemObject> items = new ArrayList<>();
+            items.add(new ItemObject(R.drawable.device1, "Device 1", "sunny"));
+            items.add(new ItemObject(R.drawable.device1, "Device 2", "Adele Adkins"));
+            items.add(new ItemObject(R.drawable.device1, "Device 3", "Ciara"));
+            items.add(new ItemObject(R.drawable.device1, "Device 4", "Bedroom"));
+            items.add(new ItemObject(R.drawable.device1, "Device 5", "Room"));
+            items.add(new ItemObject(R.drawable.device1, "Device 6", "Food"));
             return items;
 
         }
@@ -276,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
 
                     final View view = inflater.inflate(R.layout.case_device_fragment, container, false);/*rootview is the room_fragment*/
                     ListView listView = (ListView) view.findViewById(R.id.listView);/*new layout gridview for fragment=2 ie inside room_fragment*/
-                    List<ItemObject> allItems = getAllItemObject();
+                    List<ItemObject> allItems = getAllDeviceItemObject();
                     DeviceButtonAdapter customAdapter = new DeviceButtonAdapter(getContext(), allItems);
                     listView.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
                     listView.setAdapter(customAdapter);
@@ -298,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
 
                     View view = inflater.inflate(R.layout.case_room_fragment, container, false);
                     GridView gridview = (GridView) view.findViewById(R.id.gridView);
-                    List<ItemObject> allItems = getAllItemObject();
+                    List<ItemObject> allItems = getAllRoomItemObject();
                     RoomButtonAdapter customAdapter = new RoomButtonAdapter(getContext(), allItems);
                     gridview.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
 

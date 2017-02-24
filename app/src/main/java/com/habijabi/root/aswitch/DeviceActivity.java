@@ -10,6 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.transition.Slide;
 import android.util.Log;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -30,6 +33,8 @@ public class DeviceActivity extends AppCompatActivity {
         int position = i.getExtras().getInt("id");
         Integer imageid = i.getExtras().getInt("imageId");
         String nameid = i.getExtras().getString("name");
+
+
       //  ((TextView) findViewById(R.id.title)).setText(element.getTitle());
        // ((TextView) findViewById(R.id.description)).setText(element.getDescription());
 
@@ -41,5 +46,11 @@ public class DeviceActivity extends AppCompatActivity {
         mHeaderImageView.setImageResource(imageid);
         TextView mHeaderTitle = (TextView) findViewById(R.id.textView);
         mHeaderTitle.setText(nameid);
+
+        Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.explode);
+        animation2.setStartOffset(700);
+        TextView textView2=(TextView) findViewById(R.id.textView2);
+        textView2.startAnimation(animation2);
+
     }
 }

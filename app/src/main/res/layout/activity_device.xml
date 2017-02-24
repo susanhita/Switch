@@ -1,26 +1,38 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/SingleView" />
+
+
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:transitionGroup="true"
+android:orientation="vertical" >
+
+<TextView
+    android:transitionName="text"
+
+    android:text="TextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/textView"
+    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+    android:gravity="center_horizontal" />
 
     <ImageView
+        android:transitionName="animate"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/imageView"
+        android:adjustViewBounds="false"
+        android:clickable="false"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:text="Control this. Control that.\n\n\n\ Jack and Jill went up the hill to fetch a pail fo water. jack fell down and broke his corwn and Jill came tumbling after."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/balcony"
-        android:id="@+id/imageView" />
+        android:id="@+id/textView2"
+        android:gravity="center_horizontal" />
 
-    <Button
-        android:text="Button"
-        android:transitionName="profile"
-        android:layout_width="match_parent"
-        android:layout_height="380dp"
-        android:id="@+id/button1" />
+
 </LinearLayout>

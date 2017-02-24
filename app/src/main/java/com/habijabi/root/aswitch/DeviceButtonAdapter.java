@@ -99,7 +99,7 @@ public class DeviceButtonAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, RoomActivity.class);
+                Intent intent = new Intent(context, DeviceActivity.class);
                 intent.putExtra("id", position);
                 intent.putExtra("name",listStorage.get(position).getMusicName());
 
