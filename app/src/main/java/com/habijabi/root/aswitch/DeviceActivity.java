@@ -3,6 +3,7 @@ package com.habijabi.root.aswitch;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.Element;
 import android.support.transition.Fade;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -14,45 +15,31 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 public class DeviceActivity extends AppCompatActivity {
-    public static final String VIEW_NAME_HEADER_IMAGE = "detail:header:image";
-
-    // View name of the header title. Used for activity scene transitions
-    public static final String VIEW_NAME_HEADER_TITLE = "detail:header:title";
 
     @Override
-        public void onCreate(Bundle savedInstanceState) {
-
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_device);
-        Log.v("here","heeeeeeeeeeeeeeeeeeeeeeeee");
-          //  setSupportActionBar((Toolbar) findViewById(R.id.button1));
+        setContentView(R.layout.activity_device);
 
-            setActionBar((Toolbar) findViewById(R.id.toolbar));
+       // setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
+      //  long elementId = getIntent().getLongExtra("ITEM_ID", -1);
+       // Element element = DataSet.find(elementId);
+        Intent i = getIntent();
 
-            // Get intent data
-            Intent i = getIntent();
+        int position = i.getExtras().getInt("id");
+        Integer imageid = i.getExtras().getInt("imageId");
+        String nameid = i.getExtras().getString("name");
+      //  ((TextView) findViewById(R.id.title)).setText(element.getTitle());
+       // ((TextView) findViewById(R.id.description)).setText(element.getDescription());
 
-            // Selected image id
-            int position = i.getExtras().getInt("id");
-        //    RoomButtonAdapter imageAdapter = new RoomButtonAdapter(this);
-
-//            imageView.setText(position);
-            //imageView.setImageResource(imageAdapter.mThumbIds[position]);
-
-
+        // if we transition the status and navigation bar we have to wait till everything is available
+        //TransitionHelper.fixSharedElementTransitionForStatusAndNavigationBar(this);
+        // set a custom shared element enter transition
+      //  TransitionHelper.setSharedElementEnterTransition(this, R.transition.detail_activity_shared_element_enter_transition);
         ImageView mHeaderImageView = (ImageView) findViewById(R.id.imageView);
-        ViewCompat.setTransitionName(mHeaderImageView, VIEW_NAME_HEADER_IMAGE);
-        TextView mHeaderTitle = (TextView) findViewById(R.id.SingleView);
-        ViewCompat.setTransitionName(mHeaderTitle, VIEW_NAME_HEADER_TITLE);
-        }
-
-
-
-
-
-
-
-
-
+        mHeaderImageView.setImageResource(imageid);
+        TextView mHeaderTitle = (TextView) findViewById(R.id.textView);
+        mHeaderTitle.setText(nameid);
     }
+}
