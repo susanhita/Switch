@@ -10,13 +10,16 @@ package com.habijabi.root.aswitch;
     import android.transition.Slide;
     import android.transition.TransitionInflater;
     import android.util.Log;
+    import android.view.View;
     import android.view.Window;
     import android.view.animation.Animation;
     import android.view.animation.AnimationUtils;
+    import android.widget.AdapterView;
     import android.widget.ArrayAdapter;
     import android.widget.ImageView;
     import android.widget.ListView;
     import android.widget.TextView;
+    import android.widget.Toast;
 
 public class RoomActivity extends AppCompatActivity {
     public static String VIEW_NAME_HEADER_IMAGE = "detail:header:image";
@@ -34,12 +37,11 @@ public class RoomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_room);
 
 
-
         // Get intent data
         Intent i = getIntent();
 
         // Selected image id
-        int position = i.getExtras().getInt("id");
+        final int position = i.getExtras().getInt("id");
         Integer imageid = i.getExtras().getInt("imageId");
         String nameid = i.getExtras().getString("name");
 
@@ -51,18 +53,25 @@ public class RoomActivity extends AppCompatActivity {
         mHeaderImageView.setImageResource(imageid);
         TextView mHeaderTitle = (TextView) findViewById(R.id.textView);
         mHeaderTitle.setText(nameid);
-        String[] mobileArray = {"Lights","Fans","AC","TV","Camera","Locks"};
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.room_activity_list,mobileArray);
+        String[] mobileArray = {"Lights", "Fans", "AC", "TV", "Camera", "Locks"};
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.room_activity_list, mobileArray);
 
 
-        ListView roomlist=(ListView)findViewById(R.id.roomlist);
+        ListView roomlist = (ListView) findViewById(R.id.roomlist);
         roomlist.setAdapter(adapter);
         Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.explode);
         animation2.setStartOffset(700);
         roomlist.startAnimation(animation2);
+        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                     Toast.makeText(getApplicationContext(), "position" + i, Toast.LENGTH_SHORT).show();
+            }
+        };
+        roomlist.setOnItemClickListener(itemClickListener);
+
 
     }
-
 
 
 }
