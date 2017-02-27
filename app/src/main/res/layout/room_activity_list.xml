@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  Single List Item Design -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@mipmap/ac"
+        android:id="@+id/imageView2"
+        />
 
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/label"
@@ -9,3 +20,6 @@
     android:textSize="16dip"
     android:textStyle="bold" >
 </TextView>
+
+
+</LinearLayout>

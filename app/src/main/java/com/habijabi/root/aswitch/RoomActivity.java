@@ -1,6 +1,7 @@
 package com.habijabi.root.aswitch;
 
 
+    import android.content.Context;
     import android.content.Intent;
     import android.os.Bundle;
     import android.support.v4.view.ViewCompat;
@@ -10,16 +11,28 @@ package com.habijabi.root.aswitch;
     import android.transition.Slide;
     import android.transition.TransitionInflater;
     import android.util.Log;
+    import android.view.LayoutInflater;
     import android.view.View;
+    import android.view.ViewGroup;
     import android.view.Window;
     import android.view.animation.Animation;
     import android.view.animation.AnimationUtils;
     import android.widget.AdapterView;
     import android.widget.ArrayAdapter;
+    import android.widget.BaseAdapter;
     import android.widget.ImageView;
     import android.widget.ListView;
     import android.widget.TextView;
     import android.widget.Toast;
+
+    import java.util.ArrayList;
+    import java.util.List;
+
+    import static com.habijabi.root.aswitch.R.id.device_icon;
+    import static com.habijabi.root.aswitch.R.id.image;
+    import static com.habijabi.root.aswitch.R.id.imageView;
+    import static com.habijabi.root.aswitch.R.id.imageView2;
+    import static com.habijabi.root.aswitch.R.id.label;
 
 public class RoomActivity extends AppCompatActivity {
     public static String VIEW_NAME_HEADER_IMAGE = "detail:header:image";
@@ -53,12 +66,13 @@ public class RoomActivity extends AppCompatActivity {
         mHeaderImageView.setImageResource(imageid);
         TextView mHeaderTitle = (TextView) findViewById(R.id.textView);
         mHeaderTitle.setText(nameid);
-        String[] mobileArray = {"Lights", "Fans", "AC", "TV", "Camera", "Locks"};
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.room_activity_list, mobileArray);
+      //  String[] mobileArray = {"Lights", "Fans", "AC", "TV", "Camera", "Locks"};
+      //  ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.room_activity_list, mobileArray);
+        //DeviceButtonAdapter adapter = new DeviceButtonAdapter(this);
 
 
         ListView roomlist = (ListView) findViewById(R.id.roomlist);
-        roomlist.setAdapter(adapter);
+        roomlist.setAdapter(new RoomActivityAdapter(this));
         Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.explode);
         animation2.setStartOffset(700);
         roomlist.startAnimation(animation2);
@@ -75,3 +89,4 @@ public class RoomActivity extends AppCompatActivity {
 
 
 }
+
