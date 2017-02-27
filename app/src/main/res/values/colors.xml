@@ -7,5 +7,6 @@
     <color name="tab_background_selected">#feaa0c</color>
     <color name="blue">#00abea</color>
     <color name="white">#ffffff</color>
+    <color name="splash">#000000</color>
 
 </resources>

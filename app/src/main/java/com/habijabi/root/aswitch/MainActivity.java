@@ -1,10 +1,5 @@
 package com.habijabi.root.aswitch;
 
-import android.app.ActionBar;
-import android.app.Activity;
-
-import android.content.Intent;
-
 import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -31,10 +26,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
@@ -273,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        private DeviceButtonAdapter mGridAdapter;
+        private MainDeviceButtonAdapter mGridAdapter;
 
 
         @Override
@@ -289,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
                     final View view = inflater.inflate(R.layout.case_device_fragment, container, false);/*rootview is the room_fragment*/
                     ListView listView = (ListView) view.findViewById(R.id.listView);/*new layout gridview for fragment=2 ie inside room_fragment*/
                     List<ItemObject> allItems = getAllDeviceItemObject();
-                    DeviceButtonAdapter customAdapter = new DeviceButtonAdapter(getContext(), allItems);
+                    MainDeviceButtonAdapter customAdapter = new MainDeviceButtonAdapter(getContext(), allItems);
                     listView.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
                     listView.setAdapter(customAdapter);
                     return view;
@@ -311,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
                     View view = inflater.inflate(R.layout.case_room_fragment, container, false);
                     GridView gridview = (GridView) view.findViewById(R.id.gridView);
                     List<ItemObject> allItems = getAllRoomItemObject();
-                    RoomButtonAdapter customAdapter = new RoomButtonAdapter(getContext(), allItems);
+                    MainRoomButtonAdapter customAdapter = new MainRoomButtonAdapter(getContext(), allItems);
                     gridview.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
 
                     gridview.setAdapter(customAdapter);

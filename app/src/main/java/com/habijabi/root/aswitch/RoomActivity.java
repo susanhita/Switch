@@ -1,6 +1,7 @@
 package com.habijabi.root.aswitch;
 
 
+    import android.app.ActionBar;
     import android.content.Context;
     import android.content.Intent;
     import android.os.Bundle;
@@ -48,7 +49,7 @@ public class RoomActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_room);
-
+        ActionBar actionBar=getActionBar();
 
         // Get intent data
         Intent i = getIntent();
@@ -56,7 +57,7 @@ public class RoomActivity extends AppCompatActivity {
         // Selected image id
         final int position = i.getExtras().getInt("id");
         Integer imageid = i.getExtras().getInt("imageId");
-        String nameid = i.getExtras().getString("name");
+        final String nameid = i.getExtras().getString("name");
 
 //            imageView.setText(position);
         //imageView.setImageResource(imageAdapter.mThumbIds[position]);
@@ -79,7 +80,30 @@ public class RoomActivity extends AppCompatActivity {
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                     Toast.makeText(getApplicationContext(), "position" + i, Toast.LENGTH_SHORT).show();
+                    switch (i){
+                        case 0:
+                            Intent intent0 = new Intent(RoomActivity.this, LightActivity.class);
+                            intent0.putExtra("name",nameid);
+                            startActivity(intent0);
+                       /* case 1:
+                            Intent intent1 = new Intent(RoomActivity.this, FanActivity.class);
+                            intent1.putExtra("name",nameid);
+                        case 2:
+                            Intent intent2 = new Intent(RoomActivity.this, ACActivity.class);
+                            intent2.putExtra("name",nameid);
+                        case 3:
+                            Intent intent3 = new Intent(RoomActivity.this, LockActivity.class);
+                            intent3.putExtra("name",nameid);
+                        case 4:
+                            Intent intent4 = new Intent(RoomActivity.this, CameraActivity.class);
+                            intent4.putExtra("name",nameid);*/
+                        default:
+                            Toast.makeText(getApplicationContext(), "position" + i, Toast.LENGTH_SHORT).show();
+
+
+                    }
+
+
             }
         };
         roomlist.setOnItemClickListener(itemClickListener);

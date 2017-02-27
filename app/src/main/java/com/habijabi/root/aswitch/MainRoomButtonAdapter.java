@@ -48,14 +48,14 @@ import static com.habijabi.root.aswitch.R.id.card_view;
 import static com.habijabi.root.aswitch.R.id.fab;
 import static com.habijabi.root.aswitch.R.id.screen_shot;
 
-public class RoomButtonAdapter extends BaseAdapter {
+public class MainRoomButtonAdapter extends BaseAdapter {
 
         private LayoutInflater layoutinflater;
         private List<ItemObject> listStorage;
         public Context context;
         public View cardView;
 
-        public RoomButtonAdapter(Context context, List<ItemObject> customizedListView) {
+        public MainRoomButtonAdapter(Context context, List<ItemObject> customizedListView) {
             this.context = context;
             layoutinflater =(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             listStorage = customizedListView;

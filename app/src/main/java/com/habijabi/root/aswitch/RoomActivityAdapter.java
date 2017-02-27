@@ -22,7 +22,7 @@ import static com.habijabi.root.aswitch.R.id.label;
 public class RoomActivityAdapter extends BaseAdapter {
     private List<ItemObject> getAllDeviceItemObject() {
         List<ItemObject> items = new ArrayList<>();
-        items.add(new ItemObject(R.drawable.lights, "Lights", "sunny"));
+        items.add(new ItemObject(R.drawable.light, "Lights", "sunny"));
         items.add(new ItemObject(R.drawable.fan, "Fans", "Adele Adkins"));
         items.add(new ItemObject(R.drawable.ac, "AC", "Ciara"));
         items.add(new ItemObject(R.drawable.lock, "Locks", "Bedroom"));
