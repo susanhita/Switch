@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:id="@+id/splash_back"
+android:layout_height="match_parent"
+    android:background="@color/splash"
+tools:context=".SplashScreen"
+>
+
+
+    <ImageView
+        android:scaleType="centerCrop"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/back_splash"
+        android:id="@+id/splash_back_img"
+        android:keepScreenOn="false"
+        android:adjustViewBounds="false"
+        android:baselineAlignBottom="false"
+        android:contextClickable="false"
+        android:cropToPadding="false"
+        android:fitsSystemWindows="false"
+        android:layout_marginLeft="-300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="45dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logo_dhitra"
+        android:id="@+id/imageView4"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="132dp" />
+
+</RelativeLayout>
