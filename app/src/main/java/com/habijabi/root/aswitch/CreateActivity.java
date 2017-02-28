@@ -6,9 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
+import android.view.View;
 
 public class CreateActivity extends AppCompatActivity {
 
@@ -47,5 +45,12 @@ public class CreateActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.create_delete_later, menu);
         return true;
+    }
+
+
+    public void next(View view){
+        Intent intent=new Intent(this,CreateActivity2.class);
+        startActivity(intent);
+
     }
 }
