@@ -63,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
+    protected void onDestroy() {
+        finish();
+    }
+
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
@@ -321,7 +328,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-
 
 
 

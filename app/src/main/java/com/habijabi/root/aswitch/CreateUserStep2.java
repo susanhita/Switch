@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
-import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -26,7 +25,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class CreateActivity2 extends AppCompatActivity {
+public class CreateUserStep2 extends AppCompatActivity {
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -38,14 +37,18 @@ public class CreateActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create2);
+        setContentView(R.layout.user_create2);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
+    @Override
+    protected void onDestroy() {
+        finish();
+    }
 
     public void next(View view) {
-        Intent intent = new Intent(this, CreateActivity3.class);
+        Intent intent = new Intent(this, CreateUserStep3.class);
         startActivity(intent);
     }
 
@@ -172,7 +175,7 @@ public class CreateActivity2 extends AppCompatActivity {
                     alertBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
                         public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.requestPermissions(CreateActivity2.this, new String[]{Manifest.permission.CAMERA}, 0);
+                            ActivityCompat.requestPermissions(CreateUserStep2.this, new String[]{Manifest.permission.CAMERA}, 0);
                         }
                     });
                     AlertDialog alert = alertBuilder.create();

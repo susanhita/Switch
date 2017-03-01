@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.habijabi.root.aswitch.CreateActivity">
+    tools:context="com.habijabi.root.aswitch.CreateUserStep1">
 
     <TextView
         android:text="Hi, I am Dhitra.\n I will help you set up the system in a few easy steps"
@@ -22,10 +22,11 @@
         android:text="Next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
         android:id="@+id/button2"
+        android:onClick="next"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        style="@style/Widget.AppCompat.Button.Colored" />
+        android:layout_alignStart="@+id/textView4"
+        android:layout_marginStart="104dp" />
 
 </RelativeLayout>

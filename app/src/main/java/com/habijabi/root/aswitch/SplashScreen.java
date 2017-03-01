@@ -1,12 +1,10 @@
 package com.habijabi.root.aswitch;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 
 public class SplashScreen extends AppCompatActivity {
@@ -24,11 +22,11 @@ public class SplashScreen extends AppCompatActivity {
         Thread timerThread = new Thread(){
             public void run(){
                 try{
-                    sleep(2000);
+                    sleep(4000);
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{
-                    Intent intent = new Intent(SplashScreen.this,CreateActivity.class);
+                    Intent intent = new Intent(SplashScreen.this,CreateUserStep1.class);
                     startActivity(intent);
                 }
             }

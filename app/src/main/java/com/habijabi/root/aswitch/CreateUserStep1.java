@@ -8,12 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class CreateActivity extends AppCompatActivity {
+public class CreateUserStep1 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create);
+        setContentView(R.layout.user_create1);
         ActionBar actionBar=getActionBar();
        // actionBar.setHomeButtonEnabled(true);
         //actionBar.setDisplayShowHomeEnabled(true);
@@ -49,8 +49,13 @@ public class CreateActivity extends AppCompatActivity {
 
 
     public void next(View view){
-        Intent intent=new Intent(this,CreateActivity2.class);
+        Intent intent=new Intent(this,CreateUserStep2.class);
         startActivity(intent);
 
     }
+    @Override
+    protected void onDestroy() {
+        finish();
+    }
+
 }

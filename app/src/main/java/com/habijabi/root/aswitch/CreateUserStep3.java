@@ -12,12 +12,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-public class CreateActivity3 extends AppCompatActivity {
+public class CreateUserStep3 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create3);
+        setContentView(R.layout.user_create3);
         Locale[] locale = Locale.getAvailableLocales();
         List<String> countries= new ArrayList<String>();
         String country;
@@ -39,8 +39,13 @@ public class CreateActivity3 extends AppCompatActivity {
         spinner.setAdapter(adapter);
     }
     public void next(View view){
-        Intent intent=new Intent(this,CreateActivity4.class);
+        Intent intent=new Intent(this,CreateUserStep4.class);
         startActivity(intent);
     }
+    @Override
+    protected void onDestroy() {
+        finish();
+    }
+
 
 }
