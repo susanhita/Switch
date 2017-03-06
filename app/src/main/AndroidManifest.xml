@@ -5,6 +5,7 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -68,6 +69,8 @@
         <activity android:name=".CreateUserStep3" />
         <activity android:name=".CreateUserStep4" />
         <activity android:name=".CreateUserStep5"></activity>
+        <activity android:name=".CreateUserStep6"></activity>
+
     </application>
 
 </manifest>

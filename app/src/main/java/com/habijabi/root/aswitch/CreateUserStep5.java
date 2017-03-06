@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Criteria;
@@ -106,13 +107,14 @@ public class CreateUserStep5 extends AppCompatActivity implements GoogleApiClien
   }
     public void manual(View view){
         EditText editText5=(EditText)findViewById(R.id.editText5);
-        editText5.setVisibility(View.VISIBLE);
+        //editText5.setVisibility(View.VISIBLE);
         EditText editText6=(EditText)findViewById(R.id.editText6);
-        editText6.setVisibility(View.VISIBLE);
+       // editText6.setVisibility(View.VISIBLE);
         EditText editText7=(EditText)findViewById(R.id.editText7);
-        editText7.setVisibility(View.VISIBLE);
+        //editText7.setVisibility(View.VISIBLE);
         EditText editText8=(EditText)findViewById(R.id.gpsloc);
        // editText8.setVisibility(View.INVISIBLE);//will changeeeeeeeeeeeeeeeeeeeeee this after testingggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+        EditText test=(EditText)findViewById(R.id.test);
 
         checkPermission();
         Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
@@ -135,7 +137,7 @@ public class CreateUserStep5 extends AppCompatActivity implements GoogleApiClien
 
                     //  editText.setVisibility(View.VISIBLE);
 
-                    editText5.setText("Address:" + address + address1 + address2 + address3);
+                    test.setText("Address:" + address + address1 + address2 + address3);
 
 
                 }
@@ -195,6 +197,11 @@ public class CreateUserStep5 extends AppCompatActivity implements GoogleApiClien
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    public void next1(View view){
+        Intent intent=new Intent(this,CreateUserStep6.class);
+        startActivity(intent);
     }
 }
 
