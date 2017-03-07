@@ -23,11 +23,6 @@ public class DeviceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
-
-       // setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-
-      //  long elementId = getIntent().getLongExtra("ITEM_ID", -1);
-       // Element element = DataSet.find(elementId);
         Intent i = getIntent();
 
         int position = i.getExtras().getInt("id");

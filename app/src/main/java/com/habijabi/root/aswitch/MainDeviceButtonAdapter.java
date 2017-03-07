@@ -116,23 +116,7 @@ public class MainDeviceButtonAdapter extends BaseAdapter {
                         ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context,
                                 p1,p3   // The String
                         );
-
-
-
-
-
-                     /*   ActivityOptionsCompat options =
-                                ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context,
-                                        listViewHolder.screenShot ,   // Starting view
-                                "animate"    // The String
-                        );*/
                 context.startActivity( intent, options.toBundle());
-
-                // context.startActivity(intent);
-
-
-
-
             }
         });
         return convertView;

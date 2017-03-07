@@ -68,14 +68,7 @@ public class CreateUserStep5 extends AppCompatActivity implements GoogleApiClien
 
         LocationManager locationManager = (LocationManager)
         getSystemService(Context.LOCATION_SERVICE);
-      //  LocationListener locationListener = new MyLocationListener();
         checkPermission();
-      //  Criteria criteria = new Criteria();
-    //    String provider = locationManager.getBestProvider(criteria, false);
-       // Location location = locationManager.getLastKnownLocation(provider);
-
-       // Location loc=locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-       // Location loc;
         Location loc=locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
         Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
@@ -102,8 +95,6 @@ public class CreateUserStep5 extends AppCompatActivity implements GoogleApiClien
             e.printStackTrace();
         }
 
-        // locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-       // locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER,11,null);
   }
     public void manual(View view){
         EditText editText5=(EditText)findViewById(R.id.editText5);
@@ -179,10 +170,7 @@ public class CreateUserStep5 extends AppCompatActivity implements GoogleApiClien
             return true;
         }
     }
-    @Override
-    protected void onDestroy() {
-        finish();
-    }
+
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {

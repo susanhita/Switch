@@ -40,30 +40,15 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    /**
-     * The {@link PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link FragmentStatePagerAdapter}.
-     */
+
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
     private GoogleApiClient client;
 
 
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         finish();
     }
 
@@ -71,17 +56,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
-
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);/*BACKGROUND OF MAINPAGE CONTAINING ROOMVIEW,FAVEVIEW AND DEVICE VIEW]*/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
         mViewPager = (ViewPager) findViewById(R.id.container);/*PLACE CONTATING THE 3 VIEWS ROOM,DEVICE AND FAVE*/
         mViewPager.setAdapter(mSectionsPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);/*THE SLIDABLE TABS*/
@@ -96,8 +76,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -105,9 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-       // navigationView.setNavigationItemSelectedListener(this);
 
     }
 
@@ -126,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
@@ -151,42 +126,21 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         item.setVisible(true);
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
     public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
                 .setName("Main Page") // TODO: Define a title for the content shown.
@@ -202,9 +156,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
         AppIndex.AppIndexApi.start(client, getIndexApiAction());
     }
@@ -212,9 +163,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }
@@ -253,12 +201,6 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.balcony, R.drawable.bathroom
 
         };
-        public String[] mStringIds = {
-                "Bedroom", "Bedroom2",
-                "Dining","Kitchen",
-                "Balcony", "Bathroom"
-
-        };
 
         public PlaceholderFragment() {
         }
@@ -281,21 +223,6 @@ public class MainActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {/*INFLATING EACH FRAGMENT*/
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
 
-                case 2: {/*device FRAGMENT VIEW*/
-
-
-
-
-                    final View view = inflater.inflate(R.layout.case_device_fragment, container, false);/*rootview is the room_fragment*/
-                    ListView listView = (ListView) view.findViewById(R.id.listView);/*new layout gridview for fragment=2 ie inside room_fragment*/
-                    List<ItemObject> allItems = getAllDeviceItemObject();
-                    MainDeviceButtonAdapter customAdapter = new MainDeviceButtonAdapter(getContext(), allItems);
-                    listView.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
-                    listView.setAdapter(customAdapter);
-                    return view;
-                }
-
-
                 case 1: {
 
 
@@ -303,6 +230,16 @@ public class MainActivity extends AppCompatActivity {
                     TextView textView1 = (TextView) rootView1.findViewById(R.id.section_label);
                     textView1.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
                     return rootView1;
+                }
+
+                case 2: {/*device FRAGMENT VIEW*/
+                    final View view = inflater.inflate(R.layout.case_device_fragment, container, false);/*rootview is the room_fragment*/
+                    ListView listView = (ListView) view.findViewById(R.id.listView);/*new layout gridview for fragment=2 ie inside room_fragment*/
+                    List<ItemObject> allItems = getAllDeviceItemObject();
+                    MainDeviceButtonAdapter customAdapter = new MainDeviceButtonAdapter(getContext(), allItems);
+                    listView.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
+                    listView.setAdapter(customAdapter);
+                    return view;
                 }
 
                 case 3: {/*Room FRAGMENT VIEW*/
@@ -342,8 +279,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
             return PlaceholderFragment.newInstance(position + 1);
         }
 

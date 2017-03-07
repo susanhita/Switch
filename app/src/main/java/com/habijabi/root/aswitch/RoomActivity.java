@@ -51,27 +51,17 @@ public class RoomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_room);
         ActionBar actionBar=getActionBar();
 
-        // Get intent data
         Intent i = getIntent();
 
         // Selected image id
         final int position = i.getExtras().getInt("id");
         Integer imageid = i.getExtras().getInt("imageId");
         final String nameid = i.getExtras().getString("name");
-
-//            imageView.setText(position);
-        //imageView.setImageResource(imageAdapter.mThumbIds[position]);
-
         Log.v("here", "lets see" + position);
         ImageView mHeaderImageView = (ImageView) findViewById(R.id.imageView);
         mHeaderImageView.setImageResource(imageid);
         TextView mHeaderTitle = (TextView) findViewById(R.id.textView);
         mHeaderTitle.setText(nameid);
-      //  String[] mobileArray = {"Lights", "Fans", "AC", "TV", "Camera", "Locks"};
-      //  ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.room_activity_list, mobileArray);
-        //DeviceButtonAdapter adapter = new DeviceButtonAdapter(this);
-
-
         ListView roomlist = (ListView) findViewById(R.id.roomlist);
         roomlist.setAdapter(new RoomActivityAdapter(this));
         Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.explode);

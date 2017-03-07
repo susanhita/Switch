@@ -10,8 +10,7 @@
     android:focusable="true"
     android:foreground="?android:selectableItemBackground"
     card_view:cardUseCompatPadding="true"
-    card_view:cardCornerRadius="4dp"
->
+    card_view:cardCornerRadius="4dp">
 
 
 <LinearLayout
@@ -23,7 +22,6 @@ android:padding="8dp">
 
         <ImageView
             android:transitionName="animate"
-
             android:id="@+id/device_icon"
             android:layout_width="50dp"
             android:layout_height="50dp"

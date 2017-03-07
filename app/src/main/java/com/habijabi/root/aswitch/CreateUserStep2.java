@@ -27,10 +27,6 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class CreateUserStep2 extends AppCompatActivity {
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
     private GoogleApiClient client;
 
 
@@ -38,12 +34,11 @@ public class CreateUserStep2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_create2);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         finish();
     }
 
@@ -58,11 +53,6 @@ public class CreateUserStep2 extends AppCompatActivity {
         if (checkPermission()) {
 
             IntentIntegrator integrator = new IntentIntegrator(this);
-            //integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
-            // integrator.setPrompt("Scan a barcode");
-            ///   integrator.setCameraId(0);  // Use a specific camera of the device
-            // integrator.setBeepEnabled(true);
-            // integrator.setBarcodeImageEnabled(true);
             integrator.initiateScan();
 
 
@@ -93,7 +83,6 @@ public class CreateUserStep2 extends AppCompatActivity {
         return downloadDialog.show();
     }
 
-    //on ActivityResult method
 
 
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -104,32 +93,19 @@ public class CreateUserStep2 extends AppCompatActivity {
             if (result != null) {
 
                 if (result.getContents() == null) {
-
-
                     Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
 
                 } else {
-
-
                     text1.setText(result.getContents()+"\n"+result.getFormatName());
-
-
                 }
-
             } else {
-
                 super.onActivityResult(requestCode, resultCode, data);
-
             }
-
         }
 
 
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+
     public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
                 .setName("CreateActivity2 Page") // TODO: Define a title for the content shown.
@@ -145,9 +121,6 @@ public class CreateUserStep2 extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
         AppIndex.AppIndexApi.start(client, getIndexApiAction());
     }
@@ -155,9 +128,6 @@ public class CreateUserStep2 extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }

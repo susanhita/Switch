@@ -7,12 +7,10 @@ package com.habijabi.root.aswitch;
 public class ItemObject {
     private int screenShot;
     private String musicName;
-    private String musicAuthor;
 
     public ItemObject(int screenShot, String musicName, String musicAuthor) {
         this.screenShot = screenShot;
         this.musicName = musicName;
-        this.musicAuthor = musicAuthor;
     }
 
     public int getScreenShot() {
@@ -21,10 +19,6 @@ public class ItemObject {
 
     public String getMusicName() {
         return musicName;
-    }
-
-    public String getMusicAuthor() {
-        return musicAuthor;
     }
 
 }

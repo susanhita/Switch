@@ -107,32 +107,12 @@ public class MainRoomButtonAdapter extends BaseAdapter {
                     intent.putExtra("imageId",listStorage.get(position).getScreenShot());
                         Pair<View, String> p1 = Pair.create((View)listViewHolder.screenShot, "animate");
                         Pair<View, String> p3 = Pair.create((View)listViewHolder.musicName, "text");
-
-
-
-
-
                         ActivityOptionsCompat options =
                                 ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context,
-                                        p1,p3   // The String
+                                        p1,p3
                                 );
 
-
-
-
-
-                     /*   ActivityOptionsCompat options =
-                                ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context,
-                                        listViewHolder.screenShot ,   // Starting view
-                                "animate"    // The String
-                        );*/
                         context.startActivity( intent, options.toBundle());
-
-                       // context.startActivity(intent);
-
-
-
-
                 }
         });
             return convertView;
@@ -143,7 +123,6 @@ public class MainRoomButtonAdapter extends BaseAdapter {
         static class ViewHolder{
             ImageView screenShot;
             TextView musicName;
-            TextView musicAuthor;
         }
     }
 

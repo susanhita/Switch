@@ -28,9 +28,7 @@ public class RoomActivityAdapter extends BaseAdapter {
         items.add(new ItemObject(R.drawable.lock, "Locks", "Bedroom"));
         items.add(new ItemObject(R.drawable.camera, "Cameras", "Room"));
         return items;
-
     }
-
     private LayoutInflater layoutinflater;
     public List<ItemObject> allroomlist=getAllDeviceItemObject() ;
     public Context context;
@@ -59,7 +57,6 @@ public class RoomActivityAdapter extends BaseAdapter {
             convertView = layoutinflater.inflate(R.layout.room_activity_list, parent, false);
             ImageView imageView = (ImageView)convertView.findViewById(imageView2);
             imageView.setImageResource(allroomlist.get(position).getScreenShot());
-
             TextView textView=(TextView)convertView.findViewById(label);
             textView.setText(allroomlist.get(position).getMusicName());
 

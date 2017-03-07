@@ -8,15 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.habijabi.root.aswitch.CreateUserStep6"><![CDATA[
-
-
-
-
-    " />
-
-]]>
-
+    tools:context="com.habijabi.root.aswitch.CreateUserStep6">
     <Button
         android:id="@+id/button6"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -30,12 +22,13 @@
 
     <TextView
         android:id="@+id/messages"
-        android:text="echo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView12"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+        android:fontFamily="cursive"
+        android:text="echo" />
 
     <EditText
         android:id="@+id/message"
@@ -63,9 +56,11 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Message echoed from Server"
-        android:layout_marginTop="48dp"
         android:layout_below="@+id/textView10"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:fontFamily="serif-monospace"
+        android:text="Message echoed from Server"
+        android:textAppearance="@style/TextAppearance.AppCompat" />
 
 </RelativeLayout>

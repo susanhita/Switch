@@ -15,10 +15,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move);
         ImageView img=(ImageView) findViewById(R.id.splash_back_img);
-
-
         img.startAnimation(animation);
-
         Thread timerThread = new Thread(){
             public void run(){
                 try{
@@ -33,11 +30,9 @@ public class SplashScreen extends AppCompatActivity {
         };
         timerThread.start();
     }
-
     @Override
     protected void onPause() {
         super.onPause();
         finish();
     }
-
 }

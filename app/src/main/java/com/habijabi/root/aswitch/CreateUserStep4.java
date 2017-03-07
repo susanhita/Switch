@@ -18,6 +18,7 @@ public class CreateUserStep4 extends AppCompatActivity {
     }
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         finish();
     }
 

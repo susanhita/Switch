@@ -1,5 +1,4 @@
 package com.habijabi.root.aswitch;
-
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -9,15 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import static com.habijabi.root.aswitch.R.styleable.View;
 
 public class CreateUserStep6 extends AppCompatActivity {
     EditText mobilenum, countrycode;
@@ -35,7 +30,7 @@ public class CreateUserStep6 extends AppCompatActivity {
         String str="<b><p>"+randText()+"</b><p>";
     //    Log.v("susanhita",str);
 
-        mWebSocketClient.send(str+editText.getText().toString());
+        mWebSocketClient.send(editText.getText().toString()+ str);
         editText.setText("");
     }
 
@@ -62,7 +57,7 @@ public class CreateUserStep6 extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView textView = (TextView)findViewById(R.id.messages);
-
+                        textView.setText("");
                         textView.setText(Html.fromHtml(textView.getText() + "\n" + message));
                     }
                 });

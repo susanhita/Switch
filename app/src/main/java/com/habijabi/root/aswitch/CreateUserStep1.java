@@ -15,25 +15,17 @@ public class CreateUserStep1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_create1);
         ActionBar actionBar=getActionBar();
-       // actionBar.setHomeButtonEnabled(true);
-        //actionBar.setDisplayShowHomeEnabled(true);
-
 
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         item.setVisible(true);
-        //noinspection SimplifiableIfStatement
         if (id == R.id.gohome) {
             Intent intent=new Intent(this,MainActivity.class);
             startActivity(intent);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -55,6 +47,7 @@ public class CreateUserStep1 extends AppCompatActivity {
     }
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         finish();
     }
 

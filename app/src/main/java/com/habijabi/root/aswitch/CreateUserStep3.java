@@ -28,11 +28,8 @@ public class CreateUserStep3 extends AppCompatActivity {
             }
         }
         Collections.sort(countries, String.CASE_INSENSITIVE_ORDER);
-
-
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<String> adapter;
-
         adapter = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_spinner_item, countries);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -44,6 +41,7 @@ public class CreateUserStep3 extends AppCompatActivity {
     }
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         finish();
     }
 

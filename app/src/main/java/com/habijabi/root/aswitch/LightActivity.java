@@ -15,9 +15,6 @@ public class LightActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_light);
         Intent i = getIntent();
-
-        // Selected image id
-
         final String room = i.getExtras().getString("name");
         TextView room_name=(TextView)findViewById(R.id.room_name);
         room_name.setText(room);
