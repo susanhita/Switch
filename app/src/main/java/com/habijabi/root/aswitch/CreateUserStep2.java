@@ -34,6 +34,7 @@ public class CreateUserStep2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_create2);
+        overridePendingTransition(R.anim.transition,R.anim.transition_reverse);
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
     @Override

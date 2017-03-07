@@ -45,6 +45,7 @@ public class CreateUserStep5 extends AppCompatActivity implements GoogleApiClien
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_create5);
+        overridePendingTransition(R.anim.transition,R.anim.transition_reverse);
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)

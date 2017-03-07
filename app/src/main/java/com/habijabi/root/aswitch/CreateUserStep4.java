@@ -11,6 +11,8 @@ public class CreateUserStep4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_create4);
+        overridePendingTransition(R.anim.transition,R.anim.transition_reverse);
+
     }
     public void next(View view){
         Intent intent=new Intent(this,CreateUserStep5.class);

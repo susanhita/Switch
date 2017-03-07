@@ -18,6 +18,7 @@ public class CreateUserStep3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_create3);
+        overridePendingTransition(R.anim.transition,R.anim.transition_reverse);
         Locale[] locale = Locale.getAvailableLocales();
         List<String> countries= new ArrayList<String>();
         String country;

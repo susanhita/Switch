@@ -21,6 +21,7 @@ public class CreateUserStep6 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_create6);
+        overridePendingTransition(R.anim.transition,R.anim.transition_reverse);
         connectWebSocket();
 
     }
