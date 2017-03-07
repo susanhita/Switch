@@ -1,5 +1,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:transitionGroup="true"
@@ -16,10 +17,14 @@
         android:gravity="center_horizontal" />
 
     <ImageView
-        android:transitionName="animate"
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="172dp"
-        android:id="@+id/imageView" />
+        android:layout_height="117dp"
+        android:cropToPadding="false"
+        android:fitsSystemWindows="false"
+        android:forceHasOverlappingRendering="false"
+        android:scaleType="centerCrop"
+        android:transitionName="animate" />
 
     <ListView
         android:layout_width="match_parent"
