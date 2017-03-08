@@ -2,15 +2,17 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
-android:layout_height="match_parent"
+android:layout_height="480dp"
 android:background="#f0f0f0">
 <GridView
     android:id="@+id/gridView"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="480dp"
     android:drawSelectorOnTop="true"
     android:gravity="center"
     android:numColumns="auto_fit"
+    android:fillViewport="true"
+android:paddingBottom="45dp"
     android:stretchMode="columnWidth"
     android:verticalSpacing="15dp"
     android:horizontalSpacing="15dp"
