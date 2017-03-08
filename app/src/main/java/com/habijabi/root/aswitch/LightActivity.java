@@ -18,8 +18,6 @@ public class LightActivity extends AppCompatActivity {
         final String room = i.getExtras().getString("name");
         TextView room_name=(TextView)findViewById(R.id.room_name);
         room_name.setText(room);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
     }
 

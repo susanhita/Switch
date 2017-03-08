@@ -46,7 +46,6 @@ import java.util.List;
 import static android.R.transition.explode;
 import static com.habijabi.root.aswitch.R.id.card_view;
 import static com.habijabi.root.aswitch.R.id.device_icon;
-import static com.habijabi.root.aswitch.R.id.fab;
 import static com.habijabi.root.aswitch.R.id.screen_shot;
 
 public class MainDeviceButtonAdapter extends BaseAdapter {

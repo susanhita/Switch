@@ -46,11 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private GoogleApiClient client;
 
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        finish();
-    }
+
 
 
 
@@ -66,15 +62,7 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);/*THE SLIDABLE TABS*/
         tabLayout.setupWithViewPager(mViewPager);
-        /***********THIS IS THE MAIL ICON AT THE BOTTOM***************/
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
@@ -173,11 +161,11 @@ public class MainActivity extends AppCompatActivity {
         private List<ItemObject> getAllRoomItemObject() {
             List<ItemObject> items = new ArrayList<>();
             items.add(new ItemObject(R.drawable.balcony, "Balcony", "sunny"));
+            items.add(new ItemObject(R.drawable.kitchen, "Kitchen", "Food"));
             items.add(new ItemObject(R.drawable.bathroom, "Bathroom", "Adele Adkins"));
             items.add(new ItemObject(R.drawable.bedroom, "Bedroom", "Ciara"));
             items.add(new ItemObject(R.drawable.bedroom2, "Second", "Bedroom"));
             items.add(new ItemObject(R.drawable.dining, "Dining", "Room"));
-            items.add(new ItemObject(R.drawable.kitchen, "Kitchen", "Food"));
             return items;
 
         }
