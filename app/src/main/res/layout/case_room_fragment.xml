@@ -2,17 +2,18 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
-android:layout_height="480dp"
+android:layout_height="900dp"
 android:background="#f0f0f0">
 <GridView
     android:id="@+id/gridView"
     android:layout_width="fill_parent"
-    android:layout_height="480dp"
+    android:layout_height="900dp"
     android:drawSelectorOnTop="true"
     android:gravity="center"
     android:numColumns="auto_fit"
+    android:paddingBottom="70dp"
+    android:paddingTop="10dp"
     android:fillViewport="true"
-android:paddingBottom="45dp"
     android:stretchMode="columnWidth"
     android:verticalSpacing="15dp"
     android:horizontalSpacing="15dp"
