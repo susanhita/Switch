@@ -1,6 +1,7 @@
 package com.habijabi.root.aswitch;
 
 import android.net.Uri;
+import android.os.Build;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -26,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -54,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);/*BACKGROUND OF MAINPAGE CONTAINING ROOMVIEW,FAVEVIEW AND DEVICE VIEW]*/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -240,6 +244,9 @@ public class MainActivity extends AppCompatActivity {
                     gridview.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
 
                     gridview.setAdapter(customAdapter);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        gridview.setNestedScrollingEnabled(true);
+                    }
 
                     return view;
 
