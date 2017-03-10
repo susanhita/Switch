@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -111,6 +113,8 @@ public class MainRoomButtonAdapter extends BaseAdapter {
                                         p1,p3
                                 );
 
+                        Animation animation2 = AnimationUtils.loadAnimation(context, R.anim.fade);
+                        listViewHolder.screenShot.startAnimation(animation2);
                         context.startActivity( intent, options.toBundle());
                 }
         });
