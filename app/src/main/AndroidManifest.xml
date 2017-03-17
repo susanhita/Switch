@@ -66,10 +66,26 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
-        <activity android:name=".CreateUserStep3" />
-        <activity android:name=".CreateUserStep4" />
-        <activity android:name=".CreateUserStep5"></activity>
-        <activity android:name=".CreateUserStep6"></activity>
+        <activity android:name=".CreateUserStep3">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.habijabi.root.aswitch.CreateUserStep2" />
+        </activity>
+        <activity android:name=".CreateUserStep4" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.habijabi.root.aswitch.CreateUserStep3" />
+        </activity>
+        <activity android:name=".CreateUserStep5">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.habijabi.root.aswitch.CreateUserStep4" />
+        </activity>
+        <activity android:name=".CreateUserStep6">
+            <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value="com.habijabi.root.aswitch.CreateUserStep5" />
+    </activity>
 
     </application>
 

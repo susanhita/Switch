@@ -10,10 +10,12 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +39,24 @@ public class CreateUserStep2 extends AppCompatActivity {
         overridePendingTransition(R.anim.transition,R.anim.transition_reverse);
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.coming_in, R.anim.coming_out);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
+    }
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -50,14 +70,11 @@ public class CreateUserStep2 extends AppCompatActivity {
 
 
     //product qr code mode
-    public void scanQR(View v) {
+    public void scanQR(View v)
+    {
         if (checkPermission()) {
-
             IntentIntegrator integrator = new IntentIntegrator(this);
             integrator.initiateScan();
-
-
-
         }
     }
 

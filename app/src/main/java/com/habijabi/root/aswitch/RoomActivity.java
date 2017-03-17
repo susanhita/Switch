@@ -40,6 +40,7 @@ public class RoomActivity extends AppCompatActivity {
 
     // View name of the header title. Used for activity scene transitions
     public static String VIEW_NAME_HEADER_TITLE = "detail:header:title";
+    ImageView mHeaderImageView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class RoomActivity extends AppCompatActivity {
         Integer imageid = i.getExtras().getInt("imageId");
         final String nameid = i.getExtras().getString("name");
         Log.v("here", "lets see" + position);
-        ImageView mHeaderImageView = (ImageView) findViewById(R.id.imageView);
+        mHeaderImageView = (ImageView) findViewById(R.id.imageView);
         mHeaderImageView.setImageResource(imageid);
         TextView mHeaderTitle = (TextView) findViewById(R.id.textView);
         mHeaderTitle.setText(nameid);
@@ -101,6 +102,14 @@ public class RoomActivity extends AppCompatActivity {
 
     }
 
+    public void onBackPressed() {
+        Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_reverse);
+        animation2.setStartOffset(200);
+
+        mHeaderImageView.startAnimation(animation2);
+
+        super.onBackPressed();
+    }
 
 }
 

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,7 +24,22 @@ public class CreateUserStep6 extends AppCompatActivity {
         setContentView(R.layout.user_create6);
         overridePendingTransition(R.anim.transition,R.anim.transition_reverse);
         connectWebSocket();
+    }
 
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.coming_in, R.anim.coming_out);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
     }
 
     public void submit(View view){
