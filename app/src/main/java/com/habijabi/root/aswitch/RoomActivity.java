@@ -13,6 +13,7 @@ package com.habijabi.root.aswitch;
     import android.transition.TransitionInflater;
     import android.util.Log;
     import android.view.LayoutInflater;
+    import android.view.MenuItem;
     import android.view.View;
     import android.view.ViewGroup;
     import android.view.Window;
@@ -110,6 +111,15 @@ public class RoomActivity extends AppCompatActivity {
 
         super.onBackPressed();
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
 
+        return(super.onOptionsItemSelected(item));
+    }
 }
 

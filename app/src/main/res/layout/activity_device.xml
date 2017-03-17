@@ -26,11 +26,18 @@ android:orientation="vertical" >
         android:clickable="false"
         android:layout_gravity="center_horizontal" />
 
-    <TextView
-        android:text="Control this. Control that.\n\n\n\ Jack and Jill went up the hill to fetch a pail fo water. jack fell down and broke his corwn and Jill came tumbling after."
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:gravity="center_horizontal" />
 
+
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/devicelist"
+        android:gravity="center"
+        android:horizontalSpacing="4dp"
+        android:padding="4dp"
+        android:scrollbars="none"
+        android:numColumns="auto_fit"
+        android:descendantFocusability="blocksDescendants"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="4dp"
+        android:layout_height="match_parent" />
 </LinearLayout>

@@ -40,16 +40,18 @@
         -->
         <activity
             android:name=".DeviceActivity"
-            android:theme="@style/Transparent" />
+            android:theme="@style/Transparent">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.habijabi.root.aswitch.MainActivity" />
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".LightActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.habijabi.root.aswitch.RoomActivity" />
+
         </activity>
         <activity android:name=".CreateUserStep1" />
         <activity
@@ -69,22 +71,21 @@
         <activity android:name=".CreateUserStep3">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.habijabi.root.aswitch.CreateUserStep2" />
+            android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
         <activity android:name=".CreateUserStep4" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.habijabi.root.aswitch.CreateUserStep3" />
+                android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
         <activity android:name=".CreateUserStep5">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.habijabi.root.aswitch.CreateUserStep4" />
+                android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
-        <activity android:name=".CreateUserStep6">
-            <meta-data
+        <activity android:name=".CreateUserStep6"><meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value="com.habijabi.root.aswitch.CreateUserStep5" />
+        android:value="com.habijabi.root.aswitch.CreateUserStep1" />
     </activity>
 
     </application>

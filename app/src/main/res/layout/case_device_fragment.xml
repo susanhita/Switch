@@ -9,6 +9,7 @@
     android:scrollbars="none"
     android:background="#f0f0f0"
     android:numColumns="auto_fit"
+    android:divider="@null"
     android:descendantFocusability="blocksDescendants"
     android:stretchMode="columnWidth"
     android:verticalSpacing="4dp" />
