@@ -21,6 +21,7 @@ import java.util.Locale;
 public class CreateUserStep5 extends AppCompatActivity {
     int index;
     CountryCodePicker ccp;
+    String firstname,lastname,address;//To be Obtained from previous intent
 
 
     @Override
@@ -29,6 +30,8 @@ public class CreateUserStep5 extends AppCompatActivity {
         Intent intent=getIntent();
         String country_code=intent.getStringExtra("country_code");
         String countryName=intent.getStringExtra("country");
+        firstname=intent.getStringExtra("firstname");
+        lastname=intent.getStringExtra("lastname");
         Log.v("code",country_code);
         Log.v("country",countryName);
         setContentView(R.layout.user_create5);
@@ -38,11 +41,18 @@ public class CreateUserStep5 extends AppCompatActivity {
         if (!countryName.contentEquals("")) {
             ccp.setDefaultCountryUsingNameCode(country_code);
             ccp.resetToDefaultCountry();
+            EditText carrierNumberEditText=(EditText)findViewById(R.id.carrierNumberEditText);
+            ccp.registerCarrierNumberEditText(carrierNumberEditText);
         }
 
     }
     public void next(View view){
+        String phone=ccp.getFullNumber();
         Intent intent=new Intent(this,CreateUserStep6.class);
+        intent.putExtra("firstname",firstname);
+        intent.putExtra("lastname",lastname);
+        //intent.putExtra("address",address);
+        intent.putExtra("phone",phone);
         startActivity(intent);
     }
     @Override

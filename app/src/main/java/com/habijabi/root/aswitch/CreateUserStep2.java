@@ -58,6 +58,7 @@ public class CreateUserStep2 extends AppCompatActivity {
 
 
     public void next(View view) {
+        /*verify with database about the existenceof the serial number*/
         Intent intent = new Intent(this, CreateUserStep3.class);
         startActivity(intent);
     }

@@ -1,4 +1,5 @@
 package com.habijabi.root.aswitch;
+/*Sending First name, Last name and Address */
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -35,7 +36,7 @@ import java.util.Locale;
 public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     GoogleApiClient mGoogleApiClient ;
     static String country_code="JP",country="Japan";
-
+    String firstname,lastname;//To be Obtained from previous intent
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,10 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
+
+        Intent intent=getIntent();
+        firstname=intent.getStringExtra("firstname");
+        lastname=intent.getStringExtra("lastname");
     }
 
     public void onBackPressed() {
@@ -205,6 +210,8 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
         Intent intent=new Intent(this,CreateUserStep5.class);
         intent.putExtra("country_code",country_code);
         intent.putExtra("country",country);
+        intent.putExtra("firstname",firstname);
+        intent.putExtra("lastname",lastname);
         startActivity(intent);
     }
 }

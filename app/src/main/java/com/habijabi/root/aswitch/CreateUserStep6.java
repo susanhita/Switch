@@ -1,4 +1,5 @@
 package com.habijabi.root.aswitch;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,11 +18,18 @@ import java.net.URISyntaxException;
 public class CreateUserStep6 extends AppCompatActivity {
     EditText mobilenum, countrycode;
     WebSocketClient mWebSocketClient;
+    String firstname,lastname,address,phone;//To be Obtained from previous intent
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_create6);
         overridePendingTransition(R.anim.transition,R.anim.transition_reverse);
+        Intent intent=getIntent();
+        firstname=intent.getStringExtra("firstname");
+        lastname=intent.getStringExtra("lastname");
+      //  address=intent.getStringExtra("address");
+        phone=intent.getStringExtra("phone");
         connectWebSocket();
     }
 
@@ -46,14 +54,15 @@ public class CreateUserStep6 extends AppCompatActivity {
         String str="<b><p>"+randText()+"</b><p>";
     //    Log.v("susanhita",str);
 
-        mWebSocketClient.send(editText.getText().toString()+ str);
+        mWebSocketClient.send(editText.getText().toString()+ str+ "\n"+firstname+"\n"+lastname+"\n"+phone);
         editText.setText("");
     }
 
     private void connectWebSocket() {
         URI uri;
         try {
-            uri = new URI("ws://echo.websocket.org");
+           // uri = new URI("ws://echo.websocket.org");
+            uri = new URI("ws://sandbox.kaazing.net/echo");
         } catch (URISyntaxException e) {
             e.printStackTrace();
             return;
