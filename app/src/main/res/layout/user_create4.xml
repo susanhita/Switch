@@ -11,47 +11,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.habijabi.root.aswitch.CreateUserStep4">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView11"
-        android:layout_above="@+id/editText5"
-        android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editText5"
-        android:hint="Address line 1"
-        android:selectAllOnFocus="false"
-        android:visibility="invisible"
-        android:layout_below="@+id/manual"
-        android:layout_centerHorizontal="true"
-        android:singleLine="false" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editText6"
-        android:hint="Line 2"
-        android:visibility="invisible"
-        android:layout_below="@+id/editText5"
-        android:layout_alignStart="@+id/editText5" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editText7"
-        android:hint="Line 3"
-        android:visibility="invisible"
-        android:layout_below="@+id/editText6"
-        android:layout_alignStart="@+id/editText6" />
 
     <TextView
         android:text="What is your address?"
@@ -75,37 +36,27 @@
         android:layout_alignParentEnd="true" />
 
     <EditText
+        android:id="@+id/gpsloc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
+        android:layout_above="@+id/button7"
+        android:layout_below="@+id/imageView5"
+        android:layout_centerHorizontal="true"
         android:ems="10"
-        android:id="@+id/gpsloc"
-        android:visibility="invisible"
-        android:layout_below="@+id/textView8"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="14dp"
-        android:layout_marginTop="17dp" />
+        android:hint="Enter your address"
+        android:inputType="textMultiLine"
+         />
 
     <Button
-        android:text="GPS locate"
-        android:onClick="getGPS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/button4"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_above="@+id/manual"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="11dp" />
-
-    <Button
-        android:text="Or you can enter address manually"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/manual"
-        android:onClick="manual"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="12dp"
+        android:onClick="getGPS"
+        android:text="Auto Detect" />
 
     <ImageView
         android:layout_width="100dp"
@@ -114,15 +65,5 @@
         android:id="@+id/imageView5"
         android:layout_below="@+id/textView8"
         android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:layout_alignStart="@+id/editText6"
-        android:id="@+id/test"
-        android:layout_above="@+id/button7"
-        android:layout_below="@+id/textView11" />
 
 </RelativeLayout>

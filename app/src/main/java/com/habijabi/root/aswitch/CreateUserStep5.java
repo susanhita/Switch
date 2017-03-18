@@ -1,4 +1,5 @@
 package com.habijabi.root.aswitch;
+/*Sending First name, Last name , Address and Phone number*/
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,7 @@ public class CreateUserStep5 extends AppCompatActivity {
         String countryName=intent.getStringExtra("country");
         firstname=intent.getStringExtra("firstname");
         lastname=intent.getStringExtra("lastname");
+        address=intent.getStringExtra("address");
         Log.v("code",country_code);
         Log.v("country",countryName);
         setContentView(R.layout.user_create5);
@@ -51,7 +53,7 @@ public class CreateUserStep5 extends AppCompatActivity {
         Intent intent=new Intent(this,CreateUserStep6.class);
         intent.putExtra("firstname",firstname);
         intent.putExtra("lastname",lastname);
-        //intent.putExtra("address",address);
+        intent.putExtra("address",address);
         intent.putExtra("phone",phone);
         startActivity(intent);
     }

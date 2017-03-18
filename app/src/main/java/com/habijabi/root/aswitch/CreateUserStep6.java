@@ -28,7 +28,7 @@ public class CreateUserStep6 extends AppCompatActivity {
         Intent intent=getIntent();
         firstname=intent.getStringExtra("firstname");
         lastname=intent.getStringExtra("lastname");
-      //  address=intent.getStringExtra("address");
+        address=intent.getStringExtra("address");
         phone=intent.getStringExtra("phone");
         connectWebSocket();
     }
@@ -54,7 +54,7 @@ public class CreateUserStep6 extends AppCompatActivity {
         String str="<b><p>"+randText()+"</b><p>";
     //    Log.v("susanhita",str);
 
-        mWebSocketClient.send(editText.getText().toString()+ str+ "\n"+firstname+"\n"+lastname+"\n"+phone);
+        mWebSocketClient.send(editText.getText().toString()+"<br><b>Name:</b>"+firstname+" "+lastname+"<br><b>Phone:</b>"+phone+"<br><b>Address</b>"+address);
         editText.setText("");
     }
 

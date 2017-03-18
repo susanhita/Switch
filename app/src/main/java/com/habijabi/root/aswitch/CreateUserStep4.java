@@ -35,7 +35,7 @@ import java.util.Locale;
 
 public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     GoogleApiClient mGoogleApiClient ;
-    static String country_code="JP",country="Japan";
+    static String country_code="JP",country="Japan",address_final;
     String firstname,lastname;//To be Obtained from previous intent
 
     @Override
@@ -87,7 +87,6 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
         getSystemService(Context.LOCATION_SERVICE);
         checkPermission();
         Location loc=locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
         Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
         List<Address> addresses;
         try {
@@ -104,8 +103,9 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
 
                 editText.setText("Address:"+address+address1+address2+address3);
 
-
-
+                country_code=addresses.get(0).getCountryCode();
+                country=addresses.get(0).getCountryName();
+                address_final=address+address1+address2+address3;
             }
         }
         catch (IOException e) {
@@ -113,49 +113,8 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
         }
 
   }
-    public void manual(View view){
-        EditText editText5=(EditText)findViewById(R.id.editText5);
-        //editText5.setVisibility(View.VISIBLE);
-        EditText editText6=(EditText)findViewById(R.id.editText6);
-       // editText6.setVisibility(View.VISIBLE);
-        EditText editText7=(EditText)findViewById(R.id.editText7);
-        //editText7.setVisibility(View.VISIBLE);
-        EditText editText8=(EditText)findViewById(R.id.gpsloc);
-       // editText8.setVisibility(View.INVISIBLE);//will changeeeeeeeeeeeeeeeeeeeeee this after testingggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
-        EditText test=(EditText)findViewById(R.id.test);
-
-        checkPermission();
-        Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (mLastLocation==null)
-            Toast.makeText(getApplicationContext(),"null value",Toast.LENGTH_SHORT).show();
-        else {
-
-            Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
-            List<Address> addresses;
-            try {
-                addresses = gcd.getFromLocation(mLastLocation.getLatitude(),
-                        mLastLocation.getLongitude(), 1);
-                if (addresses.size() > 0) {
-                    String address = addresses.get(0).getAddressLine(0);
-                    String address1 = "\n" + addresses.get(0).getAddressLine(1);
-                    String address2 = "\n" + addresses.get(0).getAddressLine(2);
-
-                    String address3 = "\n" + addresses.get(0).getAddressLine(3);
-                    country_code=addresses.get(0).getCountryCode();
-                    country=addresses.get(0).getCountryName();
-                    //  EditText editText=(EditText) findViewById(R.id.gpsloc);
-
-                    //  editText.setVisibility(View.VISIBLE);
-
-                    test.setText("Address:" + address + address1 + address2 + address3);
 
 
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
 
     public boolean checkPermission()
@@ -207,11 +166,14 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
     }
 
     public void next1(View view){
+        EditText editText=(EditText) findViewById(R.id.gpsloc);
+        address_final=editText.getText().toString();
         Intent intent=new Intent(this,CreateUserStep5.class);
         intent.putExtra("country_code",country_code);
         intent.putExtra("country",country);
         intent.putExtra("firstname",firstname);
         intent.putExtra("lastname",lastname);
+        intent.putExtra("address",address_final);
         startActivity(intent);
     }
 }
