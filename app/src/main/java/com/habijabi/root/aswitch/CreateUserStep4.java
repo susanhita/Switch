@@ -1,5 +1,5 @@
 package com.habijabi.root.aswitch;
-/*Sending First name, Last name and Address */
+/*Sending QR code, First name, Last name and Address */
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -36,7 +36,7 @@ import java.util.Locale;
 public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     GoogleApiClient mGoogleApiClient ;
     static String country_code="JP",country="Japan",address_final;
-    String firstname,lastname;//To be Obtained from previous intent
+    String qr,firstname,lastname;//To be Obtained from previous intent
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,8 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
         Intent intent=getIntent();
         firstname=intent.getStringExtra("firstname");
         lastname=intent.getStringExtra("lastname");
+        qr=intent.getStringExtra("QRCode");
+
     }
 
     public void onBackPressed() {
@@ -103,7 +105,7 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
                     AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
                     alertBuilder.setCancelable(true);
                     alertBuilder.setTitle("Permission necessary");
-                    alertBuilder.setMessage("Access to GPS_PROVIDER is necessary to read QR code");
+                    alertBuilder.setMessage("Access to GPS_PROVIDER is necessary to find your location");
                     alertBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
                         public void onClick(DialogInterface dialog, int which) {
@@ -206,6 +208,7 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
         intent.putExtra("firstname",firstname);
         intent.putExtra("lastname",lastname);
         intent.putExtra("address",address_final);
+        intent.putExtra("QRCode",qr);
         startActivity(intent);
     }
 }

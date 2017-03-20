@@ -22,7 +22,7 @@ import java.util.Locale;
 public class CreateUserStep5 extends AppCompatActivity {
     int index;
     CountryCodePicker ccp;
-    String firstname,lastname,address;//To be Obtained from previous intent
+    String qr,firstname,lastname,address;//To be Obtained from previous intent
 
 
     @Override
@@ -34,6 +34,7 @@ public class CreateUserStep5 extends AppCompatActivity {
         firstname=intent.getStringExtra("firstname");
         lastname=intent.getStringExtra("lastname");
         address=intent.getStringExtra("address");
+        qr=intent.getStringExtra("QRCode");
         Log.v("code",country_code);
         Log.v("country",countryName);
         setContentView(R.layout.user_create5);
@@ -55,6 +56,7 @@ public class CreateUserStep5 extends AppCompatActivity {
         intent.putExtra("lastname",lastname);
         intent.putExtra("address",address);
         intent.putExtra("phone",phone);
+        intent.putExtra("QRCode",qr);
         startActivity(intent);
     }
     @Override

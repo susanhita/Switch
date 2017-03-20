@@ -59,7 +59,9 @@ public class CreateUserStep2 extends AppCompatActivity {
 
     public void next(View view) {
         /*verify with database about the existenceof the serial number*/
+        TextView text1=(TextView)findViewById(R.id.text1);
         Intent intent = new Intent(this, CreateUserStep3.class);
+        intent.putExtra("QRCode",text1.getText().toString());
         startActivity(intent);
     }
 

@@ -1,20 +1,23 @@
 package com.habijabi.root.aswitch;
-/*Sending First name and Last name*/
+/*Sending QR code, First name and Last name*/
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
 public class CreateUserStep3 extends AppCompatActivity {
-
+    String qr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_create3);
         overridePendingTransition(R.anim.transition,R.anim.transition_reverse);
+        Intent intent=getIntent();
+        qr=intent.getStringExtra("QRCode");
 
     }
     public void next(View view){
@@ -23,6 +26,7 @@ public class CreateUserStep3 extends AppCompatActivity {
         Intent intent=new Intent(this,CreateUserStep4.class);
         intent.putExtra("firstname",fName.getText().toString());
         intent.putExtra("lastname",lName.getText().toString());
+        intent.putExtra("QRCode",qr);
         startActivity(intent);
     }
     @Override

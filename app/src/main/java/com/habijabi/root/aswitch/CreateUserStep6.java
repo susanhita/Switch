@@ -18,7 +18,7 @@ import java.net.URISyntaxException;
 public class CreateUserStep6 extends AppCompatActivity {
     EditText mobilenum, countrycode;
     WebSocketClient mWebSocketClient;
-    String firstname,lastname,address,phone;//To be Obtained from previous intent
+    String qr,firstname,lastname,address,phone;//To be Obtained from previous intent
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class CreateUserStep6 extends AppCompatActivity {
         setContentView(R.layout.user_create6);
         overridePendingTransition(R.anim.transition,R.anim.transition_reverse);
         Intent intent=getIntent();
+        qr=intent.getStringExtra("QRCode");
         firstname=intent.getStringExtra("firstname");
         lastname=intent.getStringExtra("lastname");
         address=intent.getStringExtra("address");
@@ -54,15 +55,15 @@ public class CreateUserStep6 extends AppCompatActivity {
         String str="<b><p>"+randText()+"</b><p>";
     //    Log.v("susanhita",str);
 
-        mWebSocketClient.send(editText.getText().toString()+"<br><b>Name:</b>"+firstname+" "+lastname+"<br><b>Phone:</b>"+phone+"<br><b>Address</b>"+address);
+        mWebSocketClient.send(editText.getText().toString()+"<br><b>QR code:</b>"+qr+"<br><b>Name:</b>"+firstname+" "+lastname+"<br><b>Phone:</b>"+phone+"<br><b>Address</b>"+address);
         editText.setText("");
     }
 
     private void connectWebSocket() {
         URI uri;
         try {
-           // uri = new URI("ws://echo.websocket.org");
-            uri = new URI("ws://sandbox.kaazing.net/echo");
+            uri = new URI("ws://echo.websocket.org");
+           // uri = new URI("ws://sandbox.kaazing.net/echo");
         } catch (URISyntaxException e) {
             e.printStackTrace();
             return;
