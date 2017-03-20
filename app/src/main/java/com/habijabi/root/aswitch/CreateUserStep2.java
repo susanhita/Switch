@@ -1,5 +1,5 @@
 package com.habijabi.root.aswitch;
-
+/*Scan QR code*/
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -158,14 +158,14 @@ public class CreateUserStep2 extends AppCompatActivity {
                     alertBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
                         public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.requestPermissions(CreateUserStep2.this, new String[]{Manifest.permission.CAMERA}, 0);
+                            ActivityCompat.requestPermissions(CreateUserStep2.this, new String[]{Manifest.permission.CAMERA}, 7);
                         }
                     });
                     AlertDialog alert = alertBuilder.create();
                     alert.show();
 
                 } else {
-                    ActivityCompat.requestPermissions((Activity)this, new String[]{Manifest.permission.CAMERA}, 0);
+                    ActivityCompat.requestPermissions((Activity)this, new String[]{Manifest.permission.CAMERA}, 7);
                 }
                 return false;
             } else {
@@ -175,4 +175,29 @@ public class CreateUserStep2 extends AppCompatActivity {
             return true;
         }
     }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 7: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    IntentIntegrator integrator = new IntentIntegrator(this);
+                    integrator.initiateScan();
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
 }
+
