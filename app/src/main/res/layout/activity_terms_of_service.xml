@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:http="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_create"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,10 +12,10 @@
     tools:context="com.habijabi.root.aswitch.CreateUserStep1">
 
     <TextView
-        android:id="@+id/welcome"
+        android:id="@+id/terms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome To Dhitra"
+        android:text="Terms of Services"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:layout_marginTop="190dp"
         android:layout_alignParentTop="true"
@@ -22,16 +23,27 @@
 
 
     <TextView
-        android:text="Hi, I am Dhitrabot.\n I will help you set up the system in a few easy steps"
+        android:text="To use Dhitra, you must agree to theTerms of Services and read the Privacy Policy."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView4"
         android:layout_below="@+id/welcome"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp" />
+    <Button
+        android:text="Get more info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/info"
+        android:onClick="info"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_above="@+id/button2"
+        android:layout_marginBottom="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <Button
-        android:text="Next"
+        android:text="Agree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button2"

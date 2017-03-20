@@ -69,11 +69,11 @@
                 android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
         <activity android:name=".CreateUserStep5">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.habijabi.root.aswitch.CreateUserStep1" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
-        <activity android:name=".CreateUserStep3" >
+        <activity android:name=".CreateUserStep3">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.habijabi.root.aswitch.CreateUserStep1" />
@@ -83,11 +83,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
-        <activity android:name=".CreateUserStep6"><meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value="com.habijabi.root.aswitch.CreateUserStep1" />
-    </activity>
-
+        <activity android:name=".CreateUserStep6">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.habijabi.root.aswitch.CreateUserStep1" />
+        </activity>
+        <activity android:name=".TermsOfService" />
+        <activity android:name=".WebViewActivity"></activity>
     </application>
 
 </manifest>
