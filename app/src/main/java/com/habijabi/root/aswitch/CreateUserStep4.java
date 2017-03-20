@@ -83,34 +83,10 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
 
     public void getGPS(View view){
 
-        LocationManager locationManager = (LocationManager)
-        getSystemService(Context.LOCATION_SERVICE);
-        checkPermission();
-        Location loc=locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
-        List<Address> addresses;
-        try {
-            addresses = gcd.getFromLocation(loc.getLatitude(),
-                    loc.getLongitude(), 1);
-            if (addresses.size() > 0) {
-                String address = addresses.get(0).getAddressLine(0);
-                String address1="\n"+addresses.get(0).getAddressLine(1);
-                String address2="\n"+addresses.get(0).getAddressLine(2);
-                String address3="\n"+addresses.get(0).getAddressLine(3);
-                EditText editText=(EditText) findViewById(R.id.gpsloc);
 
-                editText.setVisibility(View.VISIBLE);
+        if (checkPermission()==true)
+            getGPSAddress();
 
-                editText.setText("Address:"+address+address1+address2+address3);
-
-                country_code=addresses.get(0).getCountryCode();
-                country=addresses.get(0).getCountryName();
-                address_final=address+address1+address2+address3;
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
 
   }
 
@@ -122,7 +98,7 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
         int currentAPIVersion = Build.VERSION.SDK_INT;
         if(currentAPIVersion>=android.os.Build.VERSION_CODES.M)
         {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {//access not available for GPS
                 if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                     AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
                     alertBuilder.setCancelable(true);
@@ -131,14 +107,14 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
                     alertBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
                         public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.requestPermissions(CreateUserStep4.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+                            ActivityCompat.requestPermissions(CreateUserStep4.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 8);
                         }
                     });
                     AlertDialog alert = alertBuilder.create();
                     alert.show();
 
                 } else {
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 8);
                 }
                 return false;
             } else {
@@ -149,6 +125,62 @@ public class CreateUserStep4 extends AppCompatActivity implements GoogleApiClien
         }
     }
 
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 8: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    getGPSAddress();
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
+
+
+
+
+    public void getGPSAddress() {
+
+            Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
+            List<Address> addresses;
+            try {
+                Location loc = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+
+                addresses = gcd.getFromLocation(loc.getLatitude(),
+                        loc.getLongitude(), 1);
+                if (addresses.size() > 0) {
+                    String address = addresses.get(0).getAddressLine(0);
+                    String address1="\n"+addresses.get(0).getAddressLine(1);
+                    String address2="\n"+addresses.get(0).getAddressLine(2);
+                    String address3="\n"+addresses.get(0).getAddressLine(3);
+                    EditText editText=(EditText) findViewById(R.id.gpsloc);
+
+                    editText.setVisibility(View.VISIBLE);
+
+                    editText.setText("Address:"+address+address1+address2+address3);
+
+                    country_code=addresses.get(0).getCountryCode();
+                    country=addresses.get(0).getCountryName();
+                    address_final=address+address1+address2+address3;
+                }
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
