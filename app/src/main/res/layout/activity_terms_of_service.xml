@@ -23,13 +23,13 @@
 
 
     <TextView
-        android:text="To use Dhitra, you must agree to theTerms of Services and read the Privacy Policy."
+        android:text="To use Dhitra, you must agree to the Terms of Services "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView4"
-        android:layout_below="@+id/welcome"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="40dp" />
     <Button
         android:text="Get more info"
         android:layout_width="wrap_content"
@@ -52,5 +52,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/privacy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="and read the Privacy Policy."
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp" />
 
 </RelativeLayout>
