@@ -50,9 +50,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".LightActivity">
-
-        </activity>
+        <activity android:name=".LightActivity" />
         <activity android:name=".CreateUserStep1" />
         <activity
             android:name=".SplashScreen"
@@ -83,31 +81,32 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
-        <activity android:name=".CreateUserStep6">
+        <activity android:name=".CreateUserStep8">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
-        <activity android:name=".TermsOfService" >
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.habijabi.root.aswitch.CreateUserStep1" />
+        <activity android:name=".TermsOfService">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
         <activity android:name=".WebViewActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.habijabi.root.aswitch.CreateUserStep1" />
+
             <intent-filter>
                 <data android:scheme="switch" />
+
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".CreateUserStep6" />
+        <activity android:name=".CreateUserStep7"></activity>
     </application>
 
 </manifest>
-
-
-
