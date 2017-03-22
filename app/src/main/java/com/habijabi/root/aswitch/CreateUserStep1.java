@@ -41,7 +41,7 @@ public class CreateUserStep1 extends AppCompatActivity {
 
 
     public void next(View view){
-        Intent intent=new Intent(this,TermsOfService.class);
+        Intent intent=new Intent(this,CreateUserStep2.class);
         startActivity(intent);
 
     }

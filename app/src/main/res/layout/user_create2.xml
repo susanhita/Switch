@@ -20,13 +20,14 @@
         android:id="@+id/text1" />
 
     <TextView
-        android:text="Please scan the device QR or enter the serial"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
-        android:id="@+id/textView3"
+        android:text="Please scan the device QR or enter the serial"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/scanner"
@@ -41,7 +42,8 @@
         android:layout_marginRight="10dp"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp">
     </Button>
 
     <Button
