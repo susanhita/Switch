@@ -24,8 +24,8 @@ public class DeviceActivityAdapter extends BaseAdapter {
         List<ItemObject> items = new ArrayList<>();
         items.add(new ItemObject(R.drawable.light, "Lights", "sunny"));
         items.add(new ItemObject(R.drawable.fan, "Fans", "Adele Adkins"));
-        items.add(new ItemObject(R.drawable.ac, "AC", "Ciara"));
-        items.add(new ItemObject(R.drawable.lock, "Locks", "Bedroom"));
+        items.add(new ItemObject(R.drawable.acoff, "AC", "Ciara"));
+        items.add(new ItemObject(R.drawable.lock1, "Locks", "Bedroom"));
         items.add(new ItemObject(R.drawable.camera, "Cameras", "Room"));
         return items;
     }

@@ -15,12 +15,13 @@
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:ems="10"
+        android:hint="email Id"
         android:inputType="textEmailAddress"
         tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="205dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        tools:layout_editor_absoluteY="205dp" />
 
     <TextView
         android:id="@+id/textView2"

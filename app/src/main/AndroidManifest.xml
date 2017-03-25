@@ -39,7 +39,7 @@
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
         -->
         <activity
-            android:name=".DeviceActivity"
+            android:name=".DeviceActivity_old"
             android:theme="@style/Transparent">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -66,12 +66,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
-        <activity android:name=".CreateUserStep5">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.habijabi.root.aswitch.CreateUserStep1" />
-        </activity>
-        <activity android:name=".CreateUserStep3">
+        <activity android:name=".CreateUserStep6">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.habijabi.root.aswitch.CreateUserStep1" />
@@ -81,12 +76,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
-        <activity android:name=".CreateUserStep8">
+        <activity android:name=".CreateUserStep5">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.habijabi.root.aswitch.CreateUserStep1" />
         </activity>
-        <activity android:name=".TermsOfService">
+        <activity android:name=".CreateUserStep9">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.habijabi.root.aswitch.CreateUserStep1" />
+        </activity>
+        <activity android:name=".CreateUserStep3">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.habijabi.root.aswitch.CreateUserStep1" />
@@ -105,8 +105,18 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateUserStep6" />
-        <activity android:name=".CreateUserStep7"></activity>
+        <activity android:name=".CreateUserStep7">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.habijabi.root.aswitch.CreateUserStep6" />
+        </activity>
+        <activity android:name=".CreateUserStep8">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.habijabi.root.aswitch.CreateUserStep7" />
+        </activity>
+        <activity android:name=".CreateSetup" />
+        <activity android:name=".DeviceActivity"></activity>
     </application>
 
 </manifest>

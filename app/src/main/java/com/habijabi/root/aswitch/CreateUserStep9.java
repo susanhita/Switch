@@ -111,5 +111,10 @@ public class CreateUserStep9 extends AppCompatActivity {
 
     }
 
+    public void next(View view){
+        Intent intent=new Intent(this,CreateSetup.class);
+        startActivity(intent);
+    }
+
 }
 
