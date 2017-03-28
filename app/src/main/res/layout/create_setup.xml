@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +7,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@color/alert"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.habijabi.root.aswitch.CreateSetup">
 
@@ -15,54 +15,60 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:text="Setup Device"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textSize="24sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:text="Before you begin, make sure you have the Wifi password"
-        android:textStyle="italic"
-        android:layout_below="@+id/textView11"
-        android:layout_centerHorizontal="true" />
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView13"
-        android:layout_marginTop="30dp"
-        android:animateLayoutChanges="false"
-        app:tabIndicatorColor="@color/blue"
-        app:tabIndicatorHeight="5dp" />
+        android:layout_below="@+id/textView11"
+        android:text="Before you begin, make sure you have the Wifi password"
+        android:textStyle="italic" />
+
+    <me.relex.circleindicator.CircleIndicator
+
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/show" />
+
 
     <android.support.v4.view.ViewPager
+
         android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+
+        android:visibility="visible"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/tabs"
-        android:layout_margin="2dp"
-        android:background="#e7effb"
-        android:elevation="4dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_below="@+id/indicator">
+
+
 
     </android.support.v4.view.ViewPager>
 
-    <ImageView
-        android:id="@+id/swipe"
+
+    <Button
+        android:id="@+id/show"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="57dp"
-        app:srcCompat="@drawable/swipe" />
+        android:layout_alignStart="@+id/container"
+        android:layout_below="@+id/textView13"
+        android:onClick="show"
+        android:text="Show steps"
+        android:textColor="@color/colorAccent" />
+
+
 
 
 </RelativeLayout>

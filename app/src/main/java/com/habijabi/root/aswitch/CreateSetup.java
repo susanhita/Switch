@@ -23,6 +23,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -35,6 +36,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator;
+
 
 public class CreateSetup extends AppCompatActivity {
 
@@ -51,15 +55,29 @@ public class CreateSetup extends AppCompatActivity {
         mSectionsPagerAdapter = new CreateSetup.SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.container);/*PLACE CONTATING THE 3 VIEWS ROOM,DEVICE AND FAVE*/
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);/*THE SLIDABLE TABS*/
-        tabLayout.setupWithViewPager(mViewPager);
-        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_inout);
+        //TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);/*THE SLIDABLE TABS*/
+       // tabLayout.setupWithViewPager(mViewPager);
+       // Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_inout);
 
-        ImageView img=(ImageView) findViewById(R.id.swipe);
-        img.startAnimation(animation);
+       // ImageView img=(ImageView) findViewById(R.id.swipe);
+        //img.startAnimation(animation);
+
+        CircleIndicator indicator = (CircleIndicator)findViewById(R.id.indicator);
+        indicator.setViewPager(mViewPager);
     }
 
+    public void show(View view){
+        Button show=(Button)findViewById(R.id.show);
+        show.setVisibility(View.INVISIBLE);
+        Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_to_top);
+        animation2.setStartOffset(200);
 
+        ViewPager viewPager=(ViewPager)findViewById(R.id.container);
+        viewPager.setVisibility(View.VISIBLE);
+        viewPager.startAnimation(animation2);
+
+
+    }
 
     public static class PlaceholderFragment extends Fragment {
 
@@ -77,10 +95,46 @@ public class CreateSetup extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {/*INFLATING EACH FRAGMENT*/
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
+                case 1:{
+                    View rootView = inflater.inflate(R.layout.case_default_fragment, container, false);
+                    ImageView setup = (ImageView) rootView.findViewById(R.id.setup);
+                    setup.setBackgroundResource(R.drawable.setup1);
+                    TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+                    textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+                    return rootView;
+                }
+                case 3:{
+                    View rootView = inflater.inflate(R.layout.case_default_fragment, container, false);
+                    ImageView setup = (ImageView) rootView.findViewById(R.id.setup);
+                    setup.setBackgroundResource(R.drawable.setup1);
+                    TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+                    textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+                    return rootView;
 
+                }
+                case 5:{
+                    View rootView = inflater.inflate(R.layout.case_default_fragment, container, false);
+                    ImageView setup = (ImageView) rootView.findViewById(R.id.setup);
+                    setup.setBackgroundResource(R.drawable.setup1);
+                    TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+                    textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+                    return rootView;
+
+                }
+                case 7:{
+                    View rootView = inflater.inflate(R.layout.case_default_fragment, container, false);
+                    ImageView setup = (ImageView) rootView.findViewById(R.id.setup);
+                    setup.setBackgroundResource(R.drawable.setup1);
+                    TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+                    textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+                    return rootView;
+
+                }
 
                 default: {
                     View rootView = inflater.inflate(R.layout.case_default_fragment, container, false);
+                    ImageView setup = (ImageView) rootView.findViewById(R.id.setup);
+                    setup.setBackgroundResource(R.drawable.setup2);
                     TextView textView = (TextView) rootView.findViewById(R.id.section_label);
                     textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
                     return rootView;
@@ -109,18 +163,7 @@ public class CreateSetup extends AppCompatActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
-                case 1:{
 
-                }
-                case 3:{
-
-                }
-                case 5:{
-
-                }
-                case 7:{
-
-                }
 
             }
             return null;
