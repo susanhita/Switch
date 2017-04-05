@@ -69,6 +69,9 @@ public class CreateSetup extends AppCompatActivity {
     public void show(View view){
         Button show=(Button)findViewById(R.id.show);
         show.setVisibility(View.INVISIBLE);
+
+        CircleIndicator circleIndicator =(CircleIndicator)findViewById(R.id.indicator);
+        circleIndicator.setVisibility(View.VISIBLE);
         Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_to_top);
         animation2.setStartOffset(200);
 

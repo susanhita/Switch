@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView11"
+        android:layout_marginTop="48dp"
         android:text="Before you begin, make sure you have the Wifi password"
         android:textStyle="italic" />
 
@@ -35,23 +36,25 @@
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_below="@+id/show" />
+        android:visibility="gone"
+        android:layout_below="@+id/textView13"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="33dp" />
 
 
     <android.support.v4.view.ViewPager
 
         android:id="@+id/container"
-        android:background="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-
-        android:visibility="visible"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/indicator">
+        android:layout_below="@+id/indicator"
+        android:layout_marginLeft="2dp"
 
+        android:layout_marginRight="2dp"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
     </android.support.v4.view.ViewPager>
@@ -62,11 +65,11 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/container"
-        android:layout_below="@+id/textView13"
         android:onClick="show"
         android:text="Show steps"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/textView13"
+        android:layout_alignStart="@+id/textView11" />
 
 
 
